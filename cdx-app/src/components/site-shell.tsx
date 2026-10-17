@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -59,13 +60,14 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-[#0B0F17]/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <Link href="/" className="flex items-center gap-3" aria-label="CDX home">
-            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-[#007AFF] to-[#00D4FF] text-sm font-black text-white shadow-[0_0_24px_rgba(0,122,255,0.45)]">
-              C
-            </div>
-            <div>
-              <div className="text-sm font-semibold tracking-[0.25em] text-slate-200 uppercase">
-                CDX
-              </div>
+            <div className="relative h-9 w-24 overflow-hidden rounded-lg bg-[#0B0F17] sm:h-10 sm:w-28">
+              <Image
+                src="/images/branding/CDX_Logo.jpeg"
+                alt="CDX logo"
+                fill
+                priority
+                className="object-contain"
+              />
             </div>
           </Link>
 
@@ -154,11 +156,13 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <div className="mx-auto grid max-w-7xl gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
           <div>
             <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-[#007AFF] to-[#00D4FF] text-sm font-black text-white">
-                C
-              </div>
-              <div className="text-sm font-semibold tracking-[0.25em] text-slate-200 uppercase">
-                CDX
+              <div className="relative h-9 w-24 overflow-hidden rounded-lg bg-[#0B0F17] sm:h-10 sm:w-28">
+                <Image
+                  src="/images/branding/CDX_Logo.jpeg"
+                  alt="CDX logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
             </div>
             <p className="max-w-md text-sm leading-7 text-slate-400">

@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   },
   description:
     "CDX is a premium digital studio delivering engineering, design, and media experiences that help brands grow.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

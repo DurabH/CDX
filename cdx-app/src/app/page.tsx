@@ -27,39 +27,39 @@ const highlightCards = [
 export default function HomePage() {
   return (
     <div className="pb-20">
-      <section className="mx-auto max-w-7xl px-4 pt-16 sm:px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+      <section className="mx-auto max-w-7xl px-4 pt-12 sm:px-6 sm:pt-16 lg:px-8 lg:pt-20">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-[#8fe3ff]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-3 py-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[#8fe3ff] sm:text-xs">
               <Sparkles className="h-3.5 w-3.5" />
               Creative • Develop • Experience
             </div>
-            <h1 className="mt-6 max-w-2xl text-5xl font-black tracking-[-0.04em] text-white md:text-7xl">
+            <h1 className="mt-6 max-w-2xl text-4xl font-black tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
               Build the next chapter of your brand.
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+            <p className="mt-6 max-w-xl text-base leading-7 text-slate-300 sm:text-lg sm:leading-8">
               CDX blends product engineering, UX design, AI strategy, and media production to create premium digital experiences that help businesses scale.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#007AFF] to-[#00D4FF] px-6 py-3 text-sm font-semibold text-white shadow-[0_0_24px_rgba(0,122,255,0.4)]"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#007AFF] to-[#00D4FF] px-5 py-3 text-sm font-semibold text-white shadow-[0_0_24px_rgba(0,122,255,0.4)] transition hover:opacity-95 sm:px-6"
               >
                 Book a consultation
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/portfolio"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10 sm:px-6"
               >
                 <Play className="h-4 w-4" />
                 View our work
               </Link>
             </div>
-            <div className="mt-10 flex flex-wrap gap-8 text-sm text-slate-300">
+            <div className="mt-10 flex flex-wrap gap-6 text-sm text-slate-300 sm:gap-8">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <div className="text-2xl font-bold text-white">{stat.value}</div>
+                  <div className="text-xl font-bold text-white sm:text-2xl">{stat.value}</div>
                   <div className="mt-1 text-slate-400">{stat.label}</div>
                 </div>
               ))}
@@ -87,13 +87,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="mx-auto mt-16 max-w-7xl px-4 sm:mt-20 sm:px-6 lg:px-8">
         <div className="mb-10 flex items-end justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7dd3fc]">
               What we do
             </p>
-            <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
+            <h2 className="mt-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
               Full-service capability, focused on momentum.
             </h2>
           </div>

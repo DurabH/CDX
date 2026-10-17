@@ -23,6 +23,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 * {
@@ -41,4 +42,11 @@ img {
 
 a {
   text-decoration: none;
+}
+
+input,
+textarea,
+button,
+select {
+  font: inherit;
 }

@@ -77,7 +77,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#007AFF] to-[#00D4FF] px-6 py-3 text-sm font-semibold text-white shadow-[0_0_24px_rgba(0,122,255,0.4)]"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#007AFF] to-[#00D4FF] px-6 py-3 text-sm font-semibold text-white shadow-[0_0_24px_rgba(0,122,255,0.4)] sm:w-auto"
             >
               Send inquiry
               <ArrowRight className="h-4 w-4" />
