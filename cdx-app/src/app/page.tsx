@@ -12,6 +12,7 @@ import {
   Video,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import LogoAnimationVideo from "@/components/media/LogoAnimationVideo";
 import { services } from "@/data/services";
 
 const stats = [
@@ -34,36 +35,45 @@ const luxuryPillars = [
   "AI growth",
 ];
 
-const introLetters = [
-  { letter: "C", label: "Create", delay: "0s" },
-  { letter: "D", label: "Develop", delay: "0.8s" },
-  { letter: "X", label: "Experience", delay: "1.6s" },
-];
+
 
 export default function HomePage() {
   const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
-    const introTimer = setTimeout(() => {
-      setShowIntro(false);
-    }, 3200);
+    // Listen for the video ending so the intro stays for the full animation.
+    // Fallback: hide after 15 seconds in case the event never fires.
+    const fallback = setTimeout(() => setShowIntro(false), 5000);
 
-    return () => clearTimeout(introTimer);
+    const onVideoEnd = () => {
+      clearTimeout(fallback);
+      setShowIntro(false);
+    };
+
+    window.addEventListener("intro-video-ended", onVideoEnd);
+    return () => {
+      clearTimeout(fallback);
+      window.removeEventListener("intro-video-ended", onVideoEnd);
+    };
   }, []);
 
   return (
     <div className="pb-20">
       <div
-        className={`brand-intro ${showIntro ? "visible" : "hidden"}`}
+        className="brand-intro"
         aria-hidden={!showIntro}
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 50,
+          backgroundColor: "#000",
+          opacity: showIntro ? 1 : 0,
+          pointerEvents: showIntro ? "auto" : "none",
+          transition: "opacity 0.8s ease-in-out",
+        }}
       >
-        <div className="brand-intro-inner">
-          {introLetters.map(({ letter, label, delay }) => (
-            <div key={letter} className="brand-row" style={{ animationDelay: delay }}>
-              <span className="brand-letter">{letter}</span>
-              <span className="brand-label">{label}</span>
-            </div>
-          ))}
+        <div className="relative w-full h-screen">
+          <LogoAnimationVideo />
         </div>
       </div>
 

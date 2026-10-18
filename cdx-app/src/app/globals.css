@@ -76,11 +76,7 @@ select {
   position: fixed;
   inset: 0;
   z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(7, 10, 18, 0.96);
-  backdrop-filter: blur(10px);
+  background: #000;
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
@@ -91,11 +87,9 @@ select {
 }
 
 .brand-intro-inner {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: clamp(1.2rem, 2vw, 2.4rem);
-  padding: 2rem;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
 .brand-row {
