@@ -61,7 +61,7 @@ server-rendered Next.js page with its own metadata, layout tree, and data scope.
 | `/` | `src/app/page.tsx` | SSR | Section components only |
 | `/services` | `src/app/services/page.tsx` | SSR | Tab switcher, FAQ accordion |
 | `/portfolio` | `src/app/portfolio/page.tsx` | SSR | Filter bar, modal, gallery |
-| `/about` | `src/app/about/page.tsx` | SSR | Timeline animations |
+| `/about` | `src/app/about/page.tsx` | SSR | Co-founder selected-work galleries |
 | `/contact` | `src/app/contact/page.tsx` | SSR | Form state, submission logic |
 
 **Multi-Page Navigation Rules:**
@@ -428,7 +428,11 @@ public/
 │   │   ├── design.webp
 │   │   └── video-media.webp
 │   ├── portfolio/
-│   │   └── [project-id]-thumb.webp  # 800x600, project thumbnails
+│   │   ├── [project-id]/            # Images grouped by project slug
+│   │   │   └── [asset-name].webp
+│   │   └── ...
+│   ├── founders/
+│   │   └── [founder-id]/            # Founder portfolio and profile media
 │   ├── team/
 │   │   └── [name].webp            # 400x400, square crop, person photo
 │   └── branding/
@@ -437,7 +441,11 @@ public/
 │       └── cdx-favicon.ico
 ├── videos/
 │   ├── hero-reel.mp4              # Ambient loop, no audio, max 8MB
-│   └── showreel.mp4               # Full showreel with audio, max 50MB
+│   ├── showreel.mp4               # Full showreel with audio, max 50MB
+│   ├── portfolio/
+│   │   └── [project-id]/          # Video work grouped by project slug
+│   └── founders/
+│       └── [founder-id]/          # Founder portfolio videos
 └── og-image.jpg                   # Open Graph image, 1200x630
 ```
 
@@ -536,7 +544,7 @@ npm run dev
 18. `src/app/page.tsx` — `/` Home: Hero + StatsBar + ServicesGrid + AIHighlight + Portfolio teaser + Testimonials + CTA
 19. `src/app/services/page.tsx` — `/services`: Engineering & Creative vertical tabs + ProcessSection + FAQ
 20. `src/app/portfolio/page.tsx` — `/portfolio`: Filter bar + lazy PhotoGallery + VideoPlayer + case-study Modal
-21. `src/app/about/page.tsx` — `/about`: Founding story + Values + Team grid + Milestone timeline
+21. `src/app/about/page.tsx` — `/about`: Company overview + Co-Founder profiles and selected work + Operating principles
 22. `src/app/contact/page.tsx` — `/contact`: High-converting ContactForm + Contact info panel
 
 **Phase 7 — Polish**
@@ -649,11 +657,17 @@ export default function ComponentName({ prop1, prop2 }: ComponentNameProps) {
 4. The `ServicesGrid.tsx` component renders dynamically from data — no component code change needed.
 
 ### Adding a New Portfolio Project
-1. Add entry to `src/data/projects.ts` following the `Project` interface.
-2. Add thumbnail to `public/images/portfolio/[id]-thumb.webp`.
-3. Add case study images to `public/images/portfolio/[id]-[n].webp`.
-4. The `PortfolioShowcase.tsx` and `/portfolio` page render dynamically — no component code change needed.
-5. Set `featured: true` on the project to show it on the home page showcase.
+1. Add an entry to `src/data/projects.ts` following the `PortfolioProject` interface.
+2. Store images under `public/images/portfolio/[project-id]/` and videos under `public/videos/portfolio/[project-id]/`.
+3. Use kebab-case asset names and avoid copying duplicate files from the same repository.
+4. Reference the cover, gallery assets, repository URL, and optional live URL in the project entry.
+5. If the repository has no local media, leave the media list empty and note that in `mediaNote`.
+
+### Adding a Co-Founder
+1. Add the co-founder's confirmed name, role, and portfolio URL to `src/data/founders.ts`.
+2. Store their media under `public/images/founders/[founder-id]/` and `public/videos/founders/[founder-id]/`.
+3. Do not invent profile details or use unrelated artwork as a founder portrait.
+4. The `/about` page renders co-founder profiles and expandable selected-work galleries from this data.
 
 ### Modifying Animations
 - All Framer Motion variants are centralized in `src/lib/animations.ts`.

@@ -11,7 +11,7 @@ import {
   Sparkles,
   Video,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import LogoAnimationVideo from "@/components/media/LogoAnimationVideo";
 import { services } from "@/data/services";
 
@@ -35,47 +35,44 @@ const luxuryPillars = [
   "AI growth",
 ];
 
+let introCheckedThisDocument = false;
 
 
 export default function HomePage() {
-  const [showIntro, setShowIntro] = useState(true);
+  const [showIntro, setShowIntro] = useState(false);
+  const shouldPlayIntro = useRef<boolean | null>(null);
 
   useEffect(() => {
-    // Listen for the video ending so the intro stays for the full animation.
-    // Fallback: hide after 15 seconds in case the event never fires.
-    const fallback = setTimeout(() => setShowIntro(false), 5000);
+    if (shouldPlayIntro.current === null) {
+      shouldPlayIntro.current = !introCheckedThisDocument;
+      introCheckedThisDocument = true;
+    }
 
+    if (!shouldPlayIntro.current) return;
+
+    const fallback = window.setTimeout(() => setShowIntro(false), 15000);
     const onVideoEnd = () => {
-      clearTimeout(fallback);
+      window.clearTimeout(fallback);
       setShowIntro(false);
     };
 
     window.addEventListener("intro-video-ended", onVideoEnd);
+    setShowIntro(true);
     return () => {
-      clearTimeout(fallback);
+      window.clearTimeout(fallback);
       window.removeEventListener("intro-video-ended", onVideoEnd);
     };
   }, []);
 
   return (
     <div className="pb-20">
-      <div
-        className="brand-intro"
-        aria-hidden={!showIntro}
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 50,
-          backgroundColor: "#000",
-          opacity: showIntro ? 1 : 0,
-          pointerEvents: showIntro ? "auto" : "none",
-          transition: "opacity 0.8s ease-in-out",
-        }}
-      >
-        <div className="relative w-full h-screen">
-          <LogoAnimationVideo />
+      {showIntro && (
+        <div className="brand-intro" aria-hidden="true">
+          <div className="intro-video-stage">
+            <LogoAnimationVideo />
+          </div>
         </div>
-      </div>
+      )}
 
       <div className={`site-content ${showIntro ? "site-content--dimmed" : "site-content--ready"}`}>
       <section className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 sm:pt-14 lg:px-8 lg:pt-16">

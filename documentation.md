@@ -53,7 +53,7 @@ This architecture provides:
 | `/` | Home | Landing & conversion hub | Smooth-scroll sections, CTAs |
 | `/services` | Services | Deep-dive service breakdown | Tabbed Engineering vs Creative split |
 | `/portfolio` | Portfolio | Filterable media showcase | Category filter, lazy media, case-study modal |
-| `/about` | About | Company story & philosophy | Team cards, milestone timeline |
+| `/about` | About | Company story, co-founders & principles | Founder profiles, portfolio links, selected work |
 | `/contact` | Contact | Lead generation | High-converting form + contact panel |
 
 ### Services Grouping (Two Verticals)
@@ -168,12 +168,18 @@ d:\CDX\
 │   ├── images/
 │   │   ├── hero/               # Hero section visuals & backgrounds
 │   │   ├── services/           # Per-service illustration assets
-│   │   ├── portfolio/          # Project thumbnails & case study images
+│   │   ├── portfolio/          # Client/work samples grouped by project slug
+│   │   │   ├── gym-website/
+│   │   │   └── eventbooking-website/
+│   │   ├── founders/
+│   │   │   └── waleed-bin-naeem/ # Co-founder portfolio media
 │   │   ├── team/               # Team member photos
 │   │   └── branding/           # Logo files (SVG, PNG, dark/light variants)
 │   ├── videos/
 │   │   ├── hero-reel.mp4       # Muted ambient hero background video
-│   │   └── showreel.mp4        # Full showreel for media section
+│   │   ├── showreel.mp4        # Full showreel for media section
+│   │   └── founders/
+│   │       └── waleed-bin-naeem/ # Co-founder portfolio videos
 │   └── fonts/                  # Self-hosted font fallbacks (if needed)
 │
 ├── src/
@@ -220,6 +226,7 @@ d:\CDX\
 │   ├── data/                   # Static content — decoupled from UI
 │   │   ├── services.ts
 │   │   ├── projects.ts
+│   │   ├── founders.ts
 │   │   ├── company.ts
 │   │   └── testimonials.ts
 │   │
@@ -230,6 +237,7 @@ d:\CDX\
 │   ├── types/
 │   │   ├── service.ts
 │   │   ├── project.ts
+│   │   ├── founder.ts
 │   │   └── common.ts
 │   │
 │   ├── hooks/                  # Custom React hooks
@@ -325,9 +333,10 @@ d:\CDX\
   |- Category tabs: All | Web | Mobile | AI | Design | Video
 [Portfolio Grid]
   |- Responsive masonry/grid layout
-  |- Each card: thumbnail image, project name, category badge, brief description
+  |- Each card: thumbnail image, project name, category badge, domain challenge and value-focused description
+  |- Highlights explain what the experience offers and how it helps its audience
   |- Hover: overlay with "View Case Study" button
-  |- Click -> Modal with full project detail (images, video, tech stack, outcomes)
+  |- Expandable media gallery, plus repository and live-site links where available
 [Footer]
 ```
 
@@ -336,15 +345,13 @@ d:\CDX\
 ```
 [Navbar]
 [Hero — About]
-  |- "Built by Creators, for Creators" headline
-  |- CDX founding story (from company.ts)
-[Values Section]
-  |- 3 core values with icons and descriptions
-[Team Grid]
-  |- Team member cards: photo, name, role, social links
-[Timeline / Milestones]
-  |- Horizontal or vertical timeline of CDX milestones
-[CTA]
+  |- About CDX headline and company positioning
+[Co-Founders]
+  |- Founder names and confirmed roles
+  |- Portfolio links and expandable selected-work gallery where available
+  |- Add biographies and profile photos once provided
+[Operating Principles]
+  |- Build with intent, design for people, ship with polish, stay curious
 [Footer]
 ```
 
@@ -444,7 +451,7 @@ Accepts `align` prop: `left`, `center`.
 2. Hero section grabs attention -> reads tagline -> scrolls to ServicesGrid.
 3. Clicks "Full-Stack Web Development" card -> reads full card.
 4. Scrolls to Portfolio -> sees relevant projects -> clicks case study.
-5. Reads case study in modal -> sees tech stack, outcome.
+5. Reviews the project's audience, value, and supporting media.
 6. Scrolled to Contact teaser -> clicks primary CTA -> navigates to `/contact`.
 7. Fills and submits contact form.
 
@@ -634,26 +641,28 @@ export const services: Service[] = [
 ### `projects.ts` Shape
 
 ```typescript
-export const projects: Project[] = [
+export const projects: PortfolioProject[] = [
   {
     id: 'project-slug',
     title: 'Project Name',
-    category: 'web' | 'mobile' | 'ai' | 'design' | 'video',
-    tags: ['Next.js', 'AI'],
-    thumbnail: '/images/portfolio/project-slug-thumb.webp',
-    images: ['/images/portfolio/project-slug-1.webp'],
-    videoUrl: '/videos/project-slug-demo.mp4',  // optional
+    category: 'Web application',
     description: '...',
-    challenge: '...',
-    solution: '...',
-    outcome: '...',
-    techStack: ['...'],
-    featured: true,
-    client: 'Client Name',
-    year: 2025,
+    highlights: ['...'],
+    repositoryUrl: 'https://github.com/owner/repository',
+    liveUrl: 'https://example.com', // optional
+    coverImage: '/images/portfolio/project-slug/cover.webp', // optional
+    media: [
+      { type: 'image', src: '/images/portfolio/project-slug/detail.webp', title: '...', alt: '...' },
+      { type: 'video', src: '/videos/portfolio/project-slug/demo.mp4', title: '...', alt: '...' },
+    ],
   },
 ];
 ```
+
+Keep each repository's copied media in a folder named for that project under
+`public/images/portfolio/` and `public/videos/portfolio/`. Use kebab-case names,
+avoid duplicate copies when a repository includes the same asset in multiple folders,
+and leave `media` empty when a project has no local media to import.
 
 ### `company.ts` Shape
 
@@ -692,23 +701,26 @@ export interface Service {
 }
 
 // types/project.ts
-export type ProjectCategory = 'web' | 'mobile' | 'ai' | 'design' | 'video' | 'all';
-export interface Project {
+export interface ProjectMedia {
+  type: 'image' | 'video';
+  src: string;
+  title: string;
+  alt: string;
+  poster?: string;
+}
+
+export interface PortfolioProject {
   id: string;
   title: string;
-  category: Exclude<ProjectCategory, 'all'>;
-  tags: string[];
-  thumbnail: string;
-  images: string[];
-  videoUrl?: string;
+  category: string;
   description: string;
-  challenge: string;
-  solution: string;
-  outcome: string;
-  techStack: string[];
-  featured: boolean;
-  client?: string;
-  year: number;
+  highlights: string[];
+  repositoryUrl: string;
+  liveUrl?: string;
+  coverImage?: string;
+  coverAlt?: string;
+  media: ProjectMedia[];
+  mediaNote?: string;
 }
 
 // types/common.ts

@@ -1,32 +1,7 @@
-import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-
-const projects = [
-  {
-    title: "NovaFlow",
-    category: "Web platform",
-    description: "A premium B2B platform redesign that increased demo bookings and purchase intent across the funnel.",
-    outcome: "+148% lead conversions",
-  },
-  {
-    title: "Aster Mobile",
-    category: "Mobile app",
-    description: "A fintech mobile experience blending trust, speed, and custom analytics for a global audience.",
-    outcome: "4.9/5 app rating",
-  },
-  {
-    title: "Signal AI Studio",
-    category: "AI product",
-    description: "An automation suite for marketing teams using LLM workflows to streamline research, reporting, and content generation.",
-    outcome: "3x faster campaign ops",
-  },
-  {
-    title: "Northstar Brand",
-    category: "Brand systems",
-    description: "A complete identity refresh spanning web, social, and motion assets for a venture-backed startup.",
-    outcome: "Stronger premium positioning",
-  },
-];
+import { ArrowUpRight, Building2, Code2, ExternalLink } from "lucide-react";
+import { projects } from "@/data/projects";
 
 export const metadata = {
   title: "Portfolio | CDX",
@@ -44,36 +19,124 @@ export default function PortfolioPage() {
           Proof that great experiences drive growth.
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-slate-300">
-          We help brands turn complexity into clarity — through high-converting product experiences, creative direction, and launch-ready execution.
+          Each project is shaped around the people it serves: making important information easier to find, choices easier to compare, and the next step easier to take.
         </p>
       </section>
 
       <div className="grid gap-6 md:grid-cols-2">
         {projects.map((project, index) => (
           <article
-            key={project.title}
-            className="group rounded-3xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-[#00D4FF]/30 hover:bg-white/[0.08]"
+            key={project.id}
+            className="group rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:-translate-y-1 hover:border-[#00D4FF]/30 hover:bg-white/[0.08] sm:p-6"
           >
-            <div className="mb-5 flex items-center justify-between">
+            <div className="mb-4 flex items-center justify-between">
               <span className="inline-flex rounded-full border border-white/10 bg-[#111827] px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-slate-300">
                 {project.category}
               </span>
-              <ArrowUpRight className="h-4 w-4 text-[#7dd3fc] transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span className="text-xs text-slate-500">0{index + 1}</span>
             </div>
 
-            <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#111827] to-[#0B0F17] p-5">
-              <div className="mb-4 flex items-center justify-between text-xs uppercase tracking-[0.2em] text-slate-400">
-                <span>Case study</span>
-                <span>0{index + 1}</span>
-              </div>
+            <div className="relative mb-5 aspect-[16/9] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-[#111827] to-[#0B0F17]">
+              {project.coverImage ? (
+                <Image
+                  src={project.coverImage}
+                  alt={project.coverAlt ?? project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                />
+              ) : (
+                <div className="flex h-full flex-col items-center justify-center gap-3 text-center text-slate-400">
+                  <Building2 className="h-9 w-9 text-[#7dd3fc]" aria-hidden="true" />
+                  <span className="text-sm">No local preview image in the source repository</span>
+                </div>
+              )}
+            </div>
+
+            <div>
               <h2 className="text-2xl font-bold text-white">{project.title}</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-300">{project.description}</p>
+              <p className="mt-3 text-sm leading-7 text-slate-300">{project.description}</p>
+              <h3 className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-[#8fe3ff]">
+                What it offers
+              </h3>
+              <ul className="mt-3 space-y-2 text-sm text-slate-300">
+                {project.highlights.map((highlight) => (
+                  <li key={highlight} className="flex gap-2">
+                    <span className="text-[#7dd3fc]" aria-hidden="true">•</span>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="mt-5 flex items-center justify-between border-t border-white/10 pt-4">
-              <span className="text-sm text-slate-400">Outcome</span>
-              <span className="text-sm font-semibold text-[#8fe3ff]">{project.outcome}</span>
+            <div className="mt-6 flex flex-wrap gap-4 border-t border-white/10 pt-4">
+              <a
+                href={project.repositoryUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#8fe3ff] transition hover:text-white"
+              >
+                <Code2 className="h-4 w-4" aria-hidden="true" />
+                Source code
+                <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </a>
+              {project.liveUrl && (
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-[#8fe3ff] transition hover:text-white"
+                >
+                  <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                  Visit website
+                  <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </a>
+              )}
             </div>
+
+            {project.media.length > 0 ? (
+              <details className="mt-5 border-t border-white/10 pt-4">
+                <summary className="cursor-pointer text-sm font-semibold text-white marker:text-[#7dd3fc]">
+                  Explore project media ({project.media.length})
+                </summary>
+                <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                  {project.media.map((media) => (
+                    <figure key={media.src} className="min-w-0">
+                      {media.type === "video" ? (
+                        <video
+                          className="aspect-video w-full rounded-xl border border-white/10 bg-black object-cover"
+                          controls
+                          playsInline
+                          preload="none"
+                          poster={media.poster}
+                          aria-label={media.title}
+                        >
+                          <source src={media.src} type="video/mp4" />
+                          Your browser does not support the video element.
+                        </video>
+                      ) : (
+                        <div className="relative aspect-video overflow-hidden rounded-xl border border-white/10 bg-[#111827]">
+                          <Image
+                            src={media.src}
+                            alt={media.alt}
+                            fill
+                            sizes="(max-width: 640px) 50vw, 25vw"
+                            className="object-cover"
+                          />
+                        </div>
+                      )}
+                      <figcaption className="mt-2 truncate text-xs text-slate-400">
+                        {media.title}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </details>
+            ) : (
+              <p className="mt-5 border-t border-white/10 pt-4 text-xs leading-6 text-slate-400">
+                {project.mediaNote}
+              </p>
+            )}
           </article>
         ))}
       </div>

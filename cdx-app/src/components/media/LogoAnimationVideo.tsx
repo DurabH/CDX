@@ -1,66 +1,86 @@
 "use client";
 
-import React, { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function LogoAnimationVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(false);
 
   useEffect(() => {
-    const vid = videoRef.current;
-    if (!vid) return;
+    const video = videoRef.current;
+    if (!video) return;
 
-    // Step 1: Try to play WITH sound (works if user has interacted before)
-    vid.muted = false;
-    const playWithSound = vid.play();
-
-    if (playWithSound !== undefined) {
-      playWithSound.catch(() => {
-        // Step 2: Browser blocked sound — fall back to muted autoplay
-        vid.muted = true;
-        setIsMuted(true);
-        vid.play().catch(() => {
-          // Autoplay fully blocked — skip intro
-          window.dispatchEvent(new Event("intro-video-ended"));
-        });
+    video.playbackRate = 2;
+    video.muted = false;
+    video.play().catch(() => {
+      video.muted = true;
+      setIsMuted(true);
+      video.play().catch(() => {
+        window.dispatchEvent(new Event("intro-video-ended"));
       });
-    }
+    });
   }, []);
 
   const handleUnmute = () => {
-    const vid = videoRef.current;
-    if (vid) {
-      vid.muted = false;
-      vid.play();
-      setIsMuted(false);
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = false;
+    video.play().catch((error: unknown) => {
+      console.error("Unable to enable intro video audio.", error);
+    });
+    setIsMuted(false);
+  };
+
+  const handleTimeUpdate = () => {
+    const video = videoRef.current;
+    if (!video || !Number.isFinite(video.duration)) return;
+
+    if (video.duration - video.currentTime <= 1) {
+      video.pause();
+      window.dispatchEvent(new Event("intro-video-ended"));
     }
   };
 
   return (
     <>
-      {/* Single full-screen video — object-cover fills the screen completely */}
+      <svg
+        className="intro-video-filter"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <filter id="intro-transparent-background" colorInterpolationFilters="sRGB">
+          <feColorMatrix
+            type="matrix"
+            values="
+              1 0 0 0 0
+              0 1 0 0 0
+              0 0 1 0 0
+              0.5 0.5 1 0 -0.12
+            "
+          />
+        </filter>
+      </svg>
       <video
         ref={videoRef}
         src="/videos/LogoAnimation.mp4"
-        className="absolute inset-0 w-full h-full object-cover z-10"
+        className="intro-video"
         playsInline
+        preload="auto"
+        autoPlay
         tabIndex={-1}
+        onTimeUpdate={handleTimeUpdate}
         onEnded={() => window.dispatchEvent(new Event("intro-video-ended"))}
         onError={() => window.dispatchEvent(new Event("intro-video-ended"))}
       />
 
-      {/* Unmute button — only visible if browser blocked sound */}
       {isMuted && (
         <button
+          type="button"
           onClick={handleUnmute}
-          className="absolute bottom-8 right-8 z-20 flex items-center gap-2.5 rounded-full border border-white/25 bg-black/50 px-5 py-3 text-sm font-medium text-white backdrop-blur-md transition hover:bg-white/15 hover:scale-105 cursor-pointer"
+          className="absolute bottom-6 right-6 z-20 rounded-full border border-white/20 bg-black/60 px-4 py-2 text-sm text-white backdrop-blur transition hover:bg-white/15"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5">
-            <path d="M11 5 6 9H2v6h4l5 4V5Z" />
-            <line x1="23" y1="9" x2="17" y2="15" />
-            <line x1="17" y1="9" x2="23" y2="15" />
-          </svg>
-          Tap to unmute
+          Enable intro sound
         </button>
       )}
     </>
