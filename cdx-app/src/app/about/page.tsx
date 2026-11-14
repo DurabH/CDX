@@ -138,25 +138,28 @@ export default function AboutPage() {
                       {founder.portfolioMedia.map((media) => (
                         <figure key={media.src} className="min-w-0">
                           {media.type === "video" ? (
-                            <video
-                              className="aspect-video w-full rounded-xl border border-white/10 bg-black object-cover"
-                              controls
-                              playsInline
-                              preload="none"
-                              poster={media.poster}
-                              aria-label={media.title}
-                            >
-                              <source src={media.src} type="video/mp4" />
-                              Your browser does not support the video element.
-                            </video>
+                            <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-white/10 bg-black">
+                              <video
+                                className="h-full w-full object-contain"
+                                controls
+                                playsInline
+                                preload="none"
+                                poster={media.poster}
+                                aria-label={media.title}
+                              >
+                                <source src={media.src} type="video/mp4" />
+                                Your browser does not support the video element.
+                              </video>
+                            </div>
                           ) : (
                             <div className="relative aspect-video overflow-hidden rounded-xl border border-white/10 bg-[#111827]">
                               <Image
                                 src={media.src}
                                 alt={media.alt}
                                 fill
-                                sizes="(max-width: 640px) 50vw, 25vw"
+                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
                                 className="object-cover"
+                                loading="lazy"
                               />
                             </div>
                           )}

@@ -66,6 +66,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                 alt="CDX logo"
                 fill
                 priority
+                sizes="(max-width: 640px) 96px, 112px"
                 className="object-contain"
               />
             </div>
@@ -161,6 +162,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                   src="/images/branding/CDX_Logo.jpeg"
                   alt="CDX logo"
                   fill
+                  sizes="(max-width: 640px) 96px, 112px"
                   className="object-contain"
                 />
               </div>

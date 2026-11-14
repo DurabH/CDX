@@ -14,27 +14,26 @@ const eventImage = (file: string, title: string): ProjectMedia => ({
   alt: title,
 });
 
+const logoImage = (file: string, title: string): ProjectMedia => ({
+  type: "image",
+  src: `/images/portfolio/logo-designs/${file}`,
+  title,
+  alt: title,
+});
+
+const posterImage = (file: string, title: string): ProjectMedia => ({
+  type: "image",
+  src: `/images/portfolio/poster-designs/${file}`,
+  title,
+  alt: title,
+});
+
 export const projects: PortfolioProject[] = [
-  {
-    id: "shahid-real-estate",
-    title: "Shahid Real Estate",
-    category: "Real estate website",
-    description:
-      "Finding the right property can mean sorting through scattered listings and unclear details. This site brings sale and rental options together so people can quickly compare properties and decide which ones fit their needs.",
-    highlights: [
-      "Browse properties for sale or rent in one place",
-      "Compare location, price, size, and key property details",
-      "Move from discovery to an enquiry with less friction",
-    ],
-    repositoryUrl: "https://github.com/RajaWaleed-101/shahid-real-estate",
-    media: [],
-    mediaNote:
-      "This repository contains no local image or video files. Property photos in the source are remote URLs, so they were not copied into CDX.",
-  },
   {
     id: "gym-website",
     title: "Muscle Up Gym",
     category: "Gym website",
+    vertical: "web",
     description:
       "People choosing a gym need to know what is available, who can help them, and how to get started. This site brings membership, training, and trainer information together to help prospective members make that decision.",
     highlights: [
@@ -79,6 +78,7 @@ export const projects: PortfolioProject[] = [
     id: "eventbooking-website",
     title: "EventSphere",
     category: "Event booking website",
+    vertical: "web",
     description:
       "Discovering an event often means checking multiple sources for dates, venues, and ticket details. EventSphere brings upcoming events and their key information together, helping visitors find an experience and take the next step toward booking.",
     highlights: [
@@ -101,6 +101,153 @@ export const projects: PortfolioProject[] = [
       eventImage("music-event.jpeg", "Music event"),
       eventImage("startup.jpeg", "Startup event"),
       eventImage("tech-fest.jpeg", "Technology festival"),
+    ],
+  },
+  {
+    id: "my-portfolio-2",
+    title: "Creative Developer & 3D Portfolio",
+    category: "Creative portfolio website",
+    vertical: "web",
+    description:
+      "An interactive portfolio showcasing digital craftsmanship, motion graphics, and graphic design with smooth page transitions and bespoke UI.",
+    highlights: [
+      "Showcase of digital illustration, branding, and video work",
+      "Modern responsive interactive design with custom animations",
+      "Direct GitHub open-source repository and live demo",
+    ],
+    repositoryUrl: "https://github.com/RajaWaleed-101/My-Portfolio-2",
+    liveUrl: "https://rajawaleed-101.github.io/My-Portfolio-2/",
+    coverImage: "/images/portfolio/my-portfolio-2/website-preview.png",
+    coverAlt: "Preview of creative portfolio website",
+    media: [
+      {
+        type: "image",
+        src: "/images/portfolio/my-portfolio-2/website-preview.png",
+        title: "Portfolio website preview",
+        alt: "Portfolio website preview",
+      },
+      {
+        type: "image",
+        src: "/images/founders/waleed-bin-naeem/hero.png",
+        title: "Hero visual & creative direction",
+        alt: "Hero visual & creative direction",
+      },
+      {
+        type: "image",
+        src: "/images/founders/waleed-bin-naeem/art.jpg",
+        title: "Digital illustration art",
+        alt: "Digital illustration art",
+      },
+      {
+        type: "image",
+        src: "/images/founders/waleed-bin-naeem/leapord.jpg",
+        title: "Vector character illustration",
+        alt: "Vector character illustration",
+      },
+    ],
+  },
+  {
+    id: "brand-identity-suite",
+    title: "Brand Identity & Logo Suite",
+    category: "Brand & identity design",
+    vertical: "design",
+    description:
+      "A comprehensive brand identity suite crafted for modern startups, dining establishments, technology enterprises, and educational institutions.",
+    highlights: [
+      "Custom vector logo marks, typography pairings, and color palettes",
+      "Full identity design for The Bulls, Q-Tech, PEP Inc., Tsunami, and Academia",
+      "Production-ready vector and raster assets engineered for multi-platform delivery",
+    ],
+    coverImage: "/images/portfolio/logo-designs/complete-projects.png",
+    coverAlt: "CDX Brand Identity & Logo Suite collection",
+    media: [
+      logoImage("complete-projects.png", "Complete Logo & Brand Mark Collection"),
+      logoImage("the-bulls.png", "The Bulls — Emblem & Athletic Identity"),
+      logoImage("the-bull-restaurant.jpg", "The Bull Restaurant — Premium Hospitality Branding"),
+      logoImage("qtech.png", "Q-Tech — Minimalist Technology Brand Mark"),
+      logoImage("pep-inc-logo.jpg", "PEP Inc. — Corporate Identity Design"),
+      logoImage("tsunami.jpg", "Tsunami — Dynamic Lifestyle & Apparel Identity"),
+      logoImage("universities.jpg", "Universities — Academic Institution Identity"),
+      logoImage("w-logo.jpg", "W Monogram — Geometric Vector Lettermark"),
+    ],
+  },
+  {
+    id: "poster-editorial-collection",
+    title: "Poster & Visual Arts Collection",
+    category: "Poster & print design",
+    vertical: "design",
+    description:
+      "A striking collection of commercial, conceptual cinema, and editorial posters balancing bold typography, color grading, and evocative storytelling.",
+    highlights: [
+      "Conceptual narrative posters exploring dramatic themes ('Greed', 'Hopeless')",
+      "Commercial and corporate advertising campaigns for business and transit",
+      "Hospitality, fashion, and lifestyle print collateral with high visual impact",
+    ],
+    coverImage: "/images/portfolio/poster-designs/sunset-poster.jpg",
+    coverAlt: "Poster & Visual Arts Collection",
+    media: [
+      posterImage("sunset-poster.jpg", "Sunset Silhouette — Expressive Art Poster"),
+      posterImage("greed-poster.jpg", "Greed — Conceptual Cinema Poster"),
+      posterImage("hopeless-poster.jpg", "Hopeless — Cinematic Narrative Poster"),
+      posterImage("boy-poster.jpg", "Urban Expression — Character Portrait Poster"),
+      posterImage("girl-poster.jpg", "Editorial Portrait — High-Fashion Poster"),
+      posterImage("business-growth-1.jpeg", "Market Velocity — Corporate Strategy Campaign"),
+      posterImage("business-growth-2.jpeg", "Enterprise Analytics — Business Growth Poster"),
+      posterImage("cab-transit-poster.jpeg", "Metropolitan Transit — Cab Service Campaign"),
+      posterImage("restaurant-brand-1.jpeg", "Gourmet Experience — Artisan Dining Poster"),
+      posterImage("restaurant-brand-2.jpeg", "Bistro & Culinary — Restaurant Showcase Poster"),
+    ],
+  },
+  {
+    id: "cinematic-reels-motion",
+    title: "Cinematic Reels & Motion Graphics",
+    category: "Video & motion production",
+    vertical: "video",
+    description:
+      "Ultra-HD commercial reels, dynamic motion graphics, and event highlights edited with cinematic pacing, color grading, and sound design.",
+    highlights: [
+      "Ultra-HD vertical reels engineered for maximum social media impact and retention",
+      "Dynamic 2D/3D brand motion graphics and kinetic typography",
+      "Event highlight reels and promotional product launches with cinema color grading",
+    ],
+    coverImage: "/images/portfolio/reels/cinematic-reels-cover.jpg",
+    coverAlt: "CDX 4K Cinematic Reels & Motion Graphics Showcase",
+    media: [
+      {
+        type: "video",
+        src: "/videos/portfolio/reel-1.mp4",
+        poster: "/images/portfolio/reels/reel-1-poster.jpg",
+        title: "CDX Creative Showreel — Reel 01",
+        alt: "Creative Showreel Reel 01",
+      },
+      {
+        type: "video",
+        src: "/videos/portfolio/reel-2.mp4",
+        poster: "/images/portfolio/reels/reel-2-poster.jpg",
+        title: "Visual Dynamics Reel — Reel 02",
+        alt: "Visual Dynamics Reel 02",
+      },
+      {
+        type: "video",
+        src: "/videos/portfolio/event.mp4",
+        poster: "/images/portfolio/reels/event-poster.jpg",
+        title: "Global Conference & Event Highlights",
+        alt: "Event Highlights Reel",
+      },
+      {
+        type: "video",
+        src: "/videos/portfolio/motion.mp4",
+        poster: "/images/portfolio/reels/motion-poster.jpg",
+        title: "Dynamic Kinetic Brand Motion",
+        alt: "Brand Motion Graphics",
+      },
+      {
+        type: "video",
+        src: "/videos/portfolio/pro.mp4",
+        poster: "/images/portfolio/reels/pro-poster.jpg",
+        title: "Next-Gen Product Promo Feature",
+        alt: "Product Promo Video",
+      },
     ],
   },
 ];
