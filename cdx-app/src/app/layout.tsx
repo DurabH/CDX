@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | CDX",
   },
   description:
-    "CDX is a premium digital studio delivering engineering, design, and media experiences that help brands grow.",
+    "CDX is a founder-led studio building websites, AI projects, graphic design, and video work.",
   icons: {
     icon: "/favicon.ico",
   },

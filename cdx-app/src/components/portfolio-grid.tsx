@@ -10,7 +10,7 @@ import {
   Play,
   Sparkles,
 } from "lucide-react";
-import type { PortfolioProject, ProjectMedia } from "@/types/project";
+import type { PortfolioProject } from "@/types/project";
 import MediaModal from "@/components/media-modal";
 
 const categories = [
@@ -105,7 +105,7 @@ export default function PortfolioGrid({ projects }: { projects: PortfolioProject
                     {isVideoProject && (
                       <span className="inline-flex items-center gap-1 rounded-full border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#9fe8ff]">
                         <Sparkles className="h-3 w-3 text-[#00D4FF]" />
-                        4K Ultra-HD
+                        Video collection
                       </span>
                     )}
                   </div>
@@ -147,7 +147,7 @@ export default function PortfolioGrid({ projects }: { projects: PortfolioProject
                   ) : (
                     <div className="flex h-full flex-col items-center justify-center gap-3 text-center text-slate-400">
                       <Building2 className="h-9 w-9 text-[#7dd3fc]" aria-hidden="true" />
-                      <span className="text-sm">No preview image in source repository</span>
+                      <span className="text-sm">Project preview coming soon</span>
                     </div>
                   )}
                 </div>
@@ -167,12 +167,22 @@ export default function PortfolioGrid({ projects }: { projects: PortfolioProject
                       </li>
                     ))}
                   </ul>
+
+                  {project.clientFeedback && (
+                    <div className="mt-5 rounded-xl border border-white/10 bg-[#0B0F17]/60 p-4">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[#7dd3fc]">
+                        Feedback summary · {project.clientFeedback.attribution}
+                      </p>
+                      <p className="mt-2 text-sm leading-6 text-slate-300">
+                        {project.clientFeedback.summary}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Bottom Actions Area */}
               <div>
-                {/* Live Website Link (Only when liveUrl exists, Source Code removed) */}
                 {project.liveUrl && (
                   <div className="mt-6 flex flex-wrap gap-4 border-t border-white/10 pt-4">
                     <a
@@ -182,7 +192,7 @@ export default function PortfolioGrid({ projects }: { projects: PortfolioProject
                       className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-semibold text-white transition hover:border-[#00D4FF]/40 hover:bg-white/10 hover:text-[#00D4FF]"
                     >
                       <ExternalLink className="h-3.5 w-3.5 text-[#00D4FF]" />
-                      Visit Live Website
+                      Visit live website
                       <ArrowUpRight className="h-3 w-3 text-slate-400" />
                     </a>
                   </div>
@@ -217,7 +227,7 @@ export default function PortfolioGrid({ projects }: { projects: PortfolioProject
                           <p className="text-xs text-slate-300">
                             {isVideoProject
                               ? `Cinematic Showcase • ${project.media.length} Featured Videos`
-                              : `Interactive Gallery • ${project.media.length} High-Res Assets`}
+                              : `Interactive Gallery • ${project.media.length} Items`}
                           </p>
                         </div>
                       </div>

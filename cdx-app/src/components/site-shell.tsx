@@ -168,7 +168,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               </div>
             </div>
             <p className="max-w-md text-sm leading-7 text-slate-400">
-              Creative. Develop. Experience. We build premium digital products and brands that move businesses forward.
+              Creative. Develop. Experience. A founder-led studio for websites, AI projects, design, and video.
             </p>
           </div>
 
@@ -192,9 +192,12 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               Contact
             </p>
             <ul className="space-y-3 text-sm text-slate-400">
-              <li>hello@cdx.studio</li>
-              <li>+1 (415) 555-0138</li>
-              <li>Remote-first, global delivery</li>
+              <li>
+                <Link href="/contact" className="hover:text-white">
+                  Send a project inquiry
+                </Link>
+              </li>
+              <li>Remote-first collaboration</li>
             </ul>
           </div>
         </div>

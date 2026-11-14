@@ -4,7 +4,7 @@ import PortfolioGrid from "@/components/portfolio-grid";
 
 export const metadata = {
   title: "Portfolio | CDX",
-  description: "Selected work spanning product design, development, AI, and media creation.",
+  description: "Client, academic, and studio projects across web development, design, AI, and media.",
 };
 
 export default function PortfolioPage() {
@@ -15,19 +15,19 @@ export default function PortfolioPage() {
           Portfolio
         </p>
         <h1 className="mt-4 text-4xl font-black tracking-tight text-white md:text-6xl">
-          Proof that great experiences drive growth.
+          A selection of client, academic, and studio work.
         </h1>
         <p className="mt-5 max-w-2xl text-lg text-slate-300">
-          Selected client and studio work spanning high-performance web engineering, brand identity, visual communication, and cinematic video production.
+          Websites built for clients, an academic team project, and creative work by the founders. Where project visuals are not ready yet, we say so.
         </p>
       </section>
 
       <PortfolioGrid projects={projects} />
 
       <div className="mt-14 rounded-3xl border border-[#007AFF]/20 bg-gradient-to-r from-[#0B0F17] via-[#111827] to-[#0B0F17] p-8 text-center">
-        <h3 className="text-3xl font-bold text-white">Ready to make your next launch feel premium?</h3>
+        <h3 className="text-3xl font-bold text-white">Have a project in mind?</h3>
         <p className="mx-auto mt-3 max-w-2xl text-slate-300">
-          From product strategy to execution, CDX helps teams ship with clarity, speed, and visual confidence.
+          Tell us what you need. We’ll discuss the scope, timing, and a practical next step.
         </p>
         <div className="mt-6 flex justify-center">
           <Link

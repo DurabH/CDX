@@ -15,6 +15,10 @@ export interface PortfolioProject {
   highlights: string[];
   repositoryUrl?: string;
   liveUrl?: string;
+  clientFeedback?: {
+    attribution: string;
+    summary: string;
+  };
   coverImage?: string;
   coverAlt?: string;
   media: ProjectMedia[];

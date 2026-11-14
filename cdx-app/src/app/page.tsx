@@ -15,24 +15,18 @@ import { useEffect, useRef, useState } from "react";
 import LogoAnimationVideo from "@/components/media/LogoAnimationVideo";
 import { services } from "@/data/services";
 
-const stats = [
-  { value: "5", label: "core service tracks" },
-  { value: "120+", label: "launches supported" },
-  { value: "95%", label: "average client retention" },
-];
-
 const highlightCards = [
-  { icon: Monitor, title: "Product engineering", text: "High-performance web and app experiences engineered for growth." },
-  { icon: Brain, title: "AI systems", text: "Practical AI strategy and implementation that turns ideas into value." },
-  { icon: Palette, title: "Brand & UX", text: "Premium interfaces and visual systems built to convert attention into action." },
-  { icon: Video, title: "Media production", text: "Cinematic content and rapid-turn social media assets for modern brands." },
+  { icon: Monitor, title: "Web development", text: "Responsive websites and web applications shaped around the brief." },
+  { icon: Brain, title: "AI & machine learning", text: "AI and machine-learning prototypes for clearly defined project needs." },
+  { icon: Palette, title: "Graphic design & UX", text: "Visual identities and interfaces made to communicate clearly." },
+  { icon: Video, title: "Video & motion", text: "Edited video and motion assets for company and social channels." },
 ];
 
-const luxuryPillars = [
-  "Strategy",
-  "Brand systems",
-  "Product design",
-  "AI growth",
+const studioServices = [
+  "Websites & apps",
+  "AI & machine learning",
+  "Graphic design",
+  "Video",
 ];
 
 let introCheckedThisDocument = false;
@@ -87,11 +81,11 @@ export default function HomePage() {
             </div>
 
             <h1 className="mt-6 max-w-2xl text-4xl font-black leading-[0.92] tracking-[-0.06em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
-              Luxury digital experiences <span className="text-gradient-brand">built to lead.</span>
+              Websites and digital work <span className="text-gradient-brand">built with care.</span>
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
-              We help ambitious brands look sharper, think clearer, and convert faster through strategy, product design, AI systems, and premium media execution.
+              We are a small, founder-led studio building websites for clients, exploring AI through project work, and creating design and video. You work directly with the people doing the work.
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -112,7 +106,7 @@ export default function HomePage() {
             </div>
 
             <div className="mt-10 flex flex-wrap gap-3">
-              {luxuryPillars.map((item) => (
+              {studioServices.map((item) => (
                 <div
                   key={item}
                   className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-200"
@@ -122,14 +116,6 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-5 sm:gap-8">
-              {stats.map((stat) => (
-                <div key={stat.label} className="min-w-[110px]">
-                  <div className="text-2xl font-black text-white sm:text-3xl">{stat.value}</div>
-                  <div className="mt-1 text-xs uppercase tracking-[0.16em] text-slate-400">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="relative">
@@ -138,11 +124,11 @@ export default function HomePage() {
               <div className="rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(0,122,255,0.45),_transparent_36%),linear-gradient(135deg,#111827,#0B0F17)] p-4 sm:p-5">
                 <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-slate-400">Agency stack</p>
-                    <p className="mt-2 text-xl font-semibold text-white">CDX operating model</p>
+                    <p className="text-[10px] uppercase tracking-[0.22em] text-slate-400">How we work</p>
+                    <p className="mt-2 text-xl font-semibold text-white">Founder-led, hands-on</p>
                   </div>
                   <div className="rounded-full border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[#9fe8ff]">
-                    Live
+                    Direct
                   </div>
                 </div>
 
@@ -159,23 +145,13 @@ export default function HomePage() {
                 </div>
 
                 <div className="mt-4 rounded-2xl border border-[#00D4FF]/20 bg-[#0b1220]/80 p-4">
-                  <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-slate-400">
-                    <span>Current focus</span>
-                    <span>Q4</span>
-                  </div>
-                  <div className="mt-3 flex items-end justify-between gap-4">
-                    <div>
-                      <p className="text-3xl font-black text-white">3.2x</p>
-                      <p className="text-xs text-slate-400">Average growth lift</p>
-                    </div>
-                    <div className="flex h-12 items-end gap-1">
-                      <span className="w-2 rounded-t bg-[#00D4FF]/70" style={{ height: "30%" }} />
-                      <span className="w-2 rounded-t bg-[#00D4FF]/80" style={{ height: "48%" }} />
-                      <span className="w-2 rounded-t bg-[#00D4FF]" style={{ height: "62%" }} />
-                      <span className="w-2 rounded-t bg-[#007AFF]" style={{ height: "78%" }} />
-                      <span className="w-2 rounded-t bg-[#7dd3fc]" style={{ height: "100%" }} />
-                    </div>
-                  </div>
+                  <p className="text-sm font-semibold text-white">
+                    Direct collaboration, from brief to handoff.
+                  </p>
+                  <p className="mt-2 text-xs leading-6 text-slate-400">
+                    Clear conversations, thoughtful scope, and the founders
+                    involved throughout the project.
+                  </p>
                 </div>
               </div>
             </div>
@@ -186,10 +162,10 @@ export default function HomePage() {
       <section className="mx-auto mt-18 max-w-7xl px-4 sm:mt-20 sm:px-6 lg:px-8">
         <div className="grid gap-4 md:grid-cols-4">
           {[
-            { label: "Brand strategy", text: "Position your business like a category leader." },
-            { label: "Luxury design", text: "Elegant interfaces that command attention instantly." },
-            { label: "Product systems", text: "Digital experiences built for trust and conversion." },
-            { label: "AI & content", text: "Faster execution with smarter brand momentum." },
+            { label: "Websites", text: "Clear, responsive websites shaped around your business and customers." },
+            { label: "AI & machine learning", text: "Practical experiments and software projects using AI and data." },
+            { label: "Graphic design", text: "Visual identity, graphics, and design work for digital and print." },
+            { label: "Video", text: "Edited video and motion work for brands and online channels." },
           ].map((item) => (
             <div key={item.label} className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5">
               <p className="text-[10px] uppercase tracking-[0.2em] text-[#7dd3fc]">{item.label}</p>
@@ -206,7 +182,7 @@ export default function HomePage() {
               What we do
             </p>
             <h2 className="mt-3 max-w-2xl text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-              Full-service capability built for brands that want momentum.
+              A small team with a practical mix of creative and technical skills.
             </h2>
           </div>
         </div>
@@ -246,7 +222,7 @@ export default function HomePage() {
                 Why CDX
               </p>
               <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
-                Premium execution without the agency friction.
+                Work directly with the people building your project.
               </h2>
             </div>
             <div className="space-y-4 text-slate-300">
@@ -260,7 +236,7 @@ export default function HomePage() {
               </div>
               <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
                 <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00D4FF]" />
-                <span>Focused on measurable market impact, not vanity metrics.</span>
+                <span>Clear communication and a considered handoff.</span>
               </div>
             </div>
           </div>

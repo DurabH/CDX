@@ -1,198 +1,283 @@
 import Image from "next/image";
-import { ArrowUpRight, Award, ExternalLink, Rocket, Sparkles, Users } from "lucide-react";
+import Link from "next/link";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Award,
+  ExternalLink,
+  Rocket,
+  Sparkles,
+  Users,
+} from "lucide-react";
 import { founders } from "@/data/founders";
 
-const milestones = [
-  "Brand systems for VC-backed startups",
-  "Product launches across SaaS, fintech, and media",
-  "High-converting digital experiences across five service lines",
+const approach = [
+  {
+    number: "01",
+    title: "Understand first",
+    text: "Get clear on the people, goals, and problem before settling on a solution.",
+  },
+  {
+    number: "02",
+    title: "Make with care",
+    text: "Bring strategy, design, and technology together with attention to the details.",
+  },
+  {
+    number: "03",
+    title: "See it through",
+    text: "Stay hands-on, communicate clearly, and carry the work through to delivery.",
+  },
 ];
 
 const principles = [
   {
     icon: Rocket,
     title: "Build with intent",
-    text: "Every decision should support a measurable business outcome rather than pure aesthetics.",
+    text: "Every decision should support a real need, not just add visual noise.",
   },
   {
     icon: Users,
     title: "Design for people",
-    text: "Interface quality, clarity, and trust are part of product strategy, not extras.",
+    text: "Clarity, usability, and trust belong at the heart of every experience.",
   },
   {
     icon: Sparkles,
-    title: "Ship with polish",
-    text: "We care about the details that make a product feel premium at every touchpoint.",
+    title: "Take care with craft",
+    text: "Thoughtful details make digital products feel considered and complete.",
   },
   {
     icon: Award,
-    title: "Stay relentlessly curious",
-    text: "We test, learn, and evolve — blending AI, UX, and engineering for continuous improvement.",
+    title: "Keep learning",
+    text: "We stay curious, test ideas, and keep improving how we work.",
   },
 ];
 
 export const metadata = {
   title: "About | CDX",
-  description: "Learn how CDX brings strategy, product, and creativity together.",
+  description:
+    "Meet the founders of CDX and learn about our thoughtful, hands-on approach to digital work.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 pb-20 pt-16 sm:px-6 lg:px-8">
-      <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7dd3fc]">
-            About CDX
-          </p>
-          <h1 className="mt-4 text-4xl font-black tracking-tight text-white md:text-6xl">
-            We turn bold ideas into experiences people remember.
-          </h1>
-        </div>
-        <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-slate-300">
-          CDX is a strategy-first creative and engineering studio built for teams that want more than a template. We help businesses design products, brands, and campaigns that feel premium and convert with confidence.
-        </div>
-      </section>
+    <div className="relative isolate overflow-hidden">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[520px] bg-[radial-gradient(ellipse_at_50%_0%,rgba(0,122,255,0.16),transparent_65%)]"
+      />
 
-      <section className="mt-16 grid gap-6 md:grid-cols-3">
-        {milestones.map((item, index) => (
+      <div className="mx-auto max-w-7xl px-4 pb-24 pt-14 sm:px-6 sm:pt-20 lg:px-8">
+        <section className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0f172a]/60 px-6 py-10 shadow-[0_30px_90px_rgba(0,0,0,0.24)] sm:px-10 sm:py-14 lg:px-14 lg:py-16">
           <div
-            key={item}
-            className="rounded-3xl border border-white/10 bg-[#111827] p-6"
-          >
-            <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[#007AFF] to-[#00D4FF] text-sm font-bold text-white">
-              0{index + 1}
+            aria-hidden="true"
+            className="pointer-events-none absolute -right-24 -top-32 h-80 w-80 rounded-full bg-[#00D4FF]/10 blur-3xl"
+          />
+          <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16">
+            <div>
+              <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#7dd3fc] sm:text-sm">
+                <span className="h-px w-8 bg-[#00D4FF]/70" />
+                About CDX
+              </p>
+              <h1 className="mt-6 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-white sm:text-5xl lg:text-6xl">
+                Thoughtful digital work,{" "}
+                <span className="text-gradient-brand">built hands-on.</span>
+              </h1>
+              <p className="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+                We are a founder-led creative and digital studio. We bring
+                strategy, design, and technology together to make useful,
+                considered work for businesses and project teams.
+              </p>
+              <Link
+                href="/contact"
+                className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#007AFF] to-[#00D4FF] px-5 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(0,122,255,0.22)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(0,122,255,0.32)]"
+              >
+                Start a conversation
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Link>
             </div>
-            <p className="text-base leading-7 text-slate-200">{item}</p>
+
+            <div className="rounded-2xl border border-white/10 bg-[#080c14]/70 p-5 sm:p-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                How we work
+              </p>
+              <div className="mt-5 space-y-4">
+                {approach.map((item) => (
+                  <div
+                    key={item.number}
+                    className="flex items-center gap-4 border-b border-white/[0.08] pb-4 last:border-0 last:pb-0"
+                  >
+                    <span className="font-mono text-xs text-[#7dd3fc]">
+                      {item.number}
+                    </span>
+                    <div>
+                      <p className="text-sm font-medium text-white">
+                        {item.title}
+                      </p>
+                      <p className="mt-1 text-xs leading-5 text-slate-400">
+                        {item.text}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        ))}
-      </section>
+        </section>
 
-      <section className="mt-20">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7dd3fc]">
-            The people behind CDX
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Meet our co-founders
-          </h2>
-          <p className="mt-4 leading-7 text-slate-300">
-            Get to know the people building CDX and explore their work.
-          </p>
-        </div>
+        <section className="mt-20 sm:mt-24">
+          <div className="mb-8 flex flex-col gap-3 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#7dd3fc] sm:text-sm">
+                The people behind the work
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                Meet the co-founders
+              </h2>
+            </div>
+            <p className="max-w-lg text-sm leading-7 text-slate-400 sm:text-base">
+              A small, hands-on team. We stay close to the work and care about
+              how it comes together.
+            </p>
+          </div>
 
-        <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          {founders.map((founder) => (
-            <article
-              key={founder.id}
-              className="overflow-hidden rounded-3xl border border-white/10 bg-white/5"
-            >
-              <div className="relative aspect-[16/9] border-b border-white/10 bg-[#080c14]">
-                {founder.portfolioCover ? (
-                  <Image
-                    src={founder.portfolioCover}
-                    alt={founder.portfolioCoverAlt ?? `${founder.name}'s portfolio`}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                ) : (
-                  <div className="flex h-full items-center justify-center bg-[radial-gradient(ellipse_at_center,_rgba(0,122,255,0.18),_transparent_62%)]">
-                    <span className="flex h-24 w-24 items-center justify-center rounded-3xl border border-[#00D4FF]/25 bg-[#0B0F17]/80 text-3xl font-bold tracking-wider text-[#8fe3ff] shadow-[0_0_48px_rgba(0,122,255,0.18)]">
-                      {founder.name
-                        .split(" ")
-                        .map((namePart) => namePart[0])
-                        .join("")}
+          <div className="grid gap-5 md:grid-cols-2">
+            {founders.map((founder) => (
+              <article
+                key={founder.id}
+                className="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#0f172a]/70 transition duration-300 hover:border-[#00D4FF]/25 hover:bg-[#111a2b]"
+              >
+                <div className="grid lg:h-full lg:grid-cols-[0.82fr_1.18fr]">
+                  <div
+                    className={`relative aspect-[3/4] overflow-hidden ${
+                      founder.id === "waleed-bin-naeem" ? "bg-[#e5e5e5]" : "bg-[#080c14]"
+                    } lg:aspect-auto lg:min-h-[330px]`}
+                  >
+                    <Image
+                      src={founder.avatarImage}
+                      alt={`Portrait of ${founder.name}`}
+                      fill
+                      quality={90}
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 40vw, 260px"
+                      className={`object-cover transition duration-500 ${
+                        founder.id === "waleed-bin-naeem"
+                          ? "scale-[0.94] group-hover:scale-[0.97]"
+                          : "group-hover:scale-[1.03]"
+                      }`}
+                    />
+                    <div
+                      aria-hidden="true"
+                      className="absolute inset-0 bg-gradient-to-t from-[#080c14]/35 via-transparent to-transparent"
+                    />
+                    <span className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-[#080c14]/65 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/90 backdrop-blur">
+                      Co-Founder
                     </span>
                   </div>
-                )}
-              </div>
 
-              <div className="p-6 sm:p-8">
-                <div className="flex flex-wrap items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white">{founder.name}</h3>
-                    <p className="mt-1 text-sm font-medium text-[#8fe3ff]">{founder.role}</p>
-                  </div>
-                  <a
-                    href={founder.portfolioUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#111827] px-4 py-2.5 text-sm font-semibold text-white transition hover:border-[#00D4FF]/40 hover:text-[#8fe3ff]"
-                  >
-                    <ExternalLink className="h-4 w-4" aria-hidden="true" />
-                    {founder.portfolioLabel}
-                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
-                  </a>
-                </div>
-
-                <p className="mt-4 text-sm leading-7 text-slate-300">
-                  {founder.portfolioDescription}
-                </p>
-
-                {founder.portfolioMedia && (
-                  <details className="mt-6 border-t border-white/10 pt-5">
-                    <summary className="cursor-pointer text-sm font-semibold text-white marker:text-[#7dd3fc]">
-                      Explore selected work ({founder.portfolioMedia.length})
-                    </summary>
-                    <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                      {founder.portfolioMedia.map((media) => (
-                        <figure key={media.src} className="min-w-0">
-                          {media.type === "video" ? (
-                            <div className="relative aspect-[9/16] w-full overflow-hidden rounded-xl border border-white/10 bg-black">
-                              <video
-                                className="h-full w-full object-contain"
-                                controls
-                                playsInline
-                                preload="none"
-                                poster={media.poster}
-                                aria-label={media.title}
-                              >
-                                <source src={media.src} type="video/mp4" />
-                                Your browser does not support the video element.
-                              </video>
-                            </div>
-                          ) : (
-                            <div className="relative aspect-video overflow-hidden rounded-xl border border-white/10 bg-[#111827]">
-                              <Image
-                                src={media.src}
-                                alt={media.alt}
-                                fill
-                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 280px"
-                                className="object-cover"
-                                loading="lazy"
-                              />
-                            </div>
-                          )}
-                          <figcaption className="mt-2 truncate text-xs text-slate-400">
-                            {media.title}
-                          </figcaption>
-                        </figure>
-                      ))}
+                  <div className="flex flex-col p-6 sm:p-7">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">
+                        {founder.role}
+                      </p>
+                      <h3 className="mt-2 text-2xl font-semibold tracking-tight text-white">
+                        {founder.name}
+                      </h3>
                     </div>
-                  </details>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
 
-      <section className="mt-20">
-        <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7dd3fc]">
-          Operating principles
-        </p>
-        <div className="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {principles.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#111827] text-[#00D4FF]">
-                <Icon className="h-5 w-5" />
-              </div>
-              <h2 className="text-xl font-semibold text-white">{title}</h2>
-              <p className="mt-3 text-sm leading-7 text-slate-300">{text}</p>
+                    <p className="mt-4 text-sm leading-7 text-slate-300">
+                      {founder.portfolioDescription}
+                    </p>
+
+                    {founder.specialties && (
+                      <ul className="mt-5 flex flex-wrap gap-2">
+                        {founder.specialties.map((specialty) => (
+                          <li
+                            key={specialty}
+                            className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-xs text-slate-300"
+                          >
+                            {specialty}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <a
+                      href={founder.portfolioUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="mt-auto inline-flex w-fit items-center gap-2 pt-7 text-sm font-semibold text-white transition hover:text-[#8fe3ff]"
+                    >
+                      {founder.portfolioLabel}
+                      <ExternalLink className="h-4 w-4" aria-hidden="true" />
+                      <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-20 rounded-[2rem] border border-white/10 bg-white/[0.025] p-6 sm:mt-24 sm:p-10 lg:p-12">
+          <div className="grid gap-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-16">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#7dd3fc] sm:text-sm">
+                What guides us
+              </p>
+              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                A considered way of working.
+              </h2>
+              <p className="mt-4 max-w-md text-sm leading-7 text-slate-400">
+                Good outcomes come from sound thinking, honest collaboration,
+                and care at every stage.
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
+
+            <div className="grid gap-x-8 sm:grid-cols-2">
+              {principles.map(({ icon: Icon, title, text }, index) => (
+                <div
+                  key={title}
+                  className="flex gap-4 border-t border-white/10 py-5 first:border-t-0 sm:odd:border-t-0"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#00D4FF]/15 bg-[#00D4FF]/[0.06] text-[#7dd3fc]">
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-[10px] text-slate-500">
+                        0{index + 1}
+                      </span>
+                      <h3 className="text-sm font-semibold text-white">
+                        {title}
+                      </h3>
+                    </div>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">
+                      {text}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-16 flex flex-col items-start justify-between gap-5 rounded-3xl border border-[#00D4FF]/15 bg-[linear-gradient(110deg,rgba(0,122,255,0.1),rgba(15,23,42,0.7)_55%)] p-6 sm:flex-row sm:items-center sm:p-8">
+          <div>
+            <p className="text-xl font-semibold text-white">
+              Have something in mind?
+            </p>
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              Tell us what you are working on. We would be glad to hear about it.
+            </p>
+          </div>
+          <Link
+            href="/contact"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-white transition hover:border-[#00D4FF]/40 hover:bg-white/10"
+          >
+            Get in touch
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </section>
+      </div>
     </div>
   );
 }

@@ -147,16 +147,82 @@ export const projects: PortfolioProject[] = [
     ],
   },
   {
+    id: "yaseen-engineering-consultancy",
+    title: "Yaseen Engineering Consultancy",
+    category: "Client website",
+    vertical: "web",
+    description:
+      "A website for Yaseen Engineering Consultancy, presenting its architectural and engineering services, including 2D and 3D design, structural work, MEP, and cost estimation.",
+    highlights: [
+      "Introduces the consultancy and its engineering services",
+      "Presents architectural, structural, MEP, and estimation work",
+      "Provides business and contact information for prospective clients",
+    ],
+    repositoryUrl: "https://github.com/DurabH/YEC_Website.git",
+    liveUrl: "https://www.yaseeneng.com",
+    clientFeedback: {
+      attribution: "Project client",
+      summary:
+        "The client said the website matched his requirements and that he was happy with the service.",
+    },
+    media: [],
+    mediaNote: "Additional project visuals will be added later.",
+  },
+  {
+    id: "cad-sketch-by-ashir",
+    title: "CAD Sketch by Ashir",
+    category: "Local client website",
+    vertical: "web",
+    description:
+      "A focused portfolio website for a local AutoCAD designer, created to present architectural drafting services and make it easier for prospective clients to get in touch.",
+    highlights: [
+      "Presents 2D plans, 3D renders, and drafting services",
+      "Introduces the designer and the work he offers",
+      "Includes direct inquiry and contact paths",
+    ],
+    repositoryUrl: "https://github.com/DurabH/CAD_Sketch_By_Ashir.git",
+    liveUrl: "https://cad-sketch-by-ashir.vercel.app/",
+    clientFeedback: {
+      attribution: "Local client",
+      summary:
+        "The client reported being happy with the finished website and service.",
+    },
+    media: [],
+    mediaNote: "Additional project visuals will be added later.",
+  },
+  {
+    id: "alzheimer-disease-detection",
+    title: "Alzheimer’s Disease Detection System",
+    category: "Student FYP project",
+    vertical: "web",
+    description:
+      "An academic final-year project developed with a student team to explore a multimodal Alzheimer’s disease detection concept using brain MRI images and cognitive assessment data. This prototype is for educational purposes and is not a medical diagnostic tool.",
+    highlights: [
+      "Combines an MRI image workflow with cognitive assessment",
+      "Presents an academic machine-learning project in a web interface",
+      "Clearly distinguishes a student prototype from clinical diagnosis",
+    ],
+    repositoryUrl: "https://github.com/DurabH/Alzheimer_Disease_Detection.git",
+    liveUrl: "https://alzheimer-disease-detection-three.vercel.app/",
+    clientFeedback: {
+      attribution: "Student FYP team",
+      summary:
+        "The student team reported being happy with the project and satisfied with the collaboration.",
+    },
+    media: [],
+    mediaNote: "Additional project visuals will be added later.",
+  },
+  {
     id: "brand-identity-suite",
     title: "Brand Identity & Logo Suite",
     category: "Brand & identity design",
     vertical: "design",
     description:
-      "A comprehensive brand identity suite crafted for modern startups, dining establishments, technology enterprises, and educational institutions.",
+      "A collection of logo and identity work for businesses, dining, technology, and education.",
     highlights: [
       "Custom vector logo marks, typography pairings, and color palettes",
       "Full identity design for The Bulls, Q-Tech, PEP Inc., Tsunami, and Academia",
-      "Production-ready vector and raster assets engineered for multi-platform delivery",
+      "Vector and raster artwork prepared for use across common formats",
     ],
     coverImage: "/images/portfolio/logo-designs/complete-projects.png",
     coverAlt: "CDX Brand Identity & Logo Suite collection",
@@ -204,14 +270,14 @@ export const projects: PortfolioProject[] = [
     category: "Video & motion production",
     vertical: "video",
     description:
-      "Ultra-HD commercial reels, dynamic motion graphics, and event highlights edited with cinematic pacing, color grading, and sound design.",
+      "A collection of short-form video edits, motion graphics, and event highlights, with attention to pacing, color, and sound.",
     highlights: [
-      "Ultra-HD vertical reels engineered for maximum social media impact and retention",
+      "Vertical edits prepared for social media channels",
       "Dynamic 2D/3D brand motion graphics and kinetic typography",
-      "Event highlight reels and promotional product launches with cinema color grading",
+      "Event highlights and promotional edits with considered color and sound",
     ],
     coverImage: "/images/portfolio/reels/cinematic-reels-cover.jpg",
-    coverAlt: "CDX 4K Cinematic Reels & Motion Graphics Showcase",
+    coverAlt: "CDX video editing and motion graphics collection",
     media: [
       {
         type: "video",

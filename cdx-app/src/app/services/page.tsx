@@ -4,7 +4,7 @@ import { creativeServices, engineeringServices, services } from "@/data/services
 
 export const metadata = {
   title: "Services | CDX",
-  description: "Engineering and creative solutions for growth-focused brands.",
+  description: "Web, AI, design, and video services from a founder-led studio.",
 };
 
 export default function ServicesPage() {
@@ -16,10 +16,10 @@ export default function ServicesPage() {
           Services
         </div>
         <h1 className="mt-6 max-w-3xl text-4xl font-black tracking-tight text-white md:text-6xl">
-          Strategy, build, and storytelling for ambitious brands.
+          Web, AI, design, and video for projects with a clear purpose.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-          CDX combines engineering rigor with creative direction to turn bold ideas into high-performing digital experiences.
+          We work across web development, AI, design, and video, with project scope shaped around each client’s goals and resources.
         </p>
       </section>
 

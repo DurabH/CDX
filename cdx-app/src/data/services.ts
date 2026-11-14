@@ -19,9 +19,9 @@ export const services: Service[] = [
     vertical: "engineering",
     title: "Web Development",
     shortDescription:
-      "Blazing-fast, scalable web applications built with cutting-edge stacks — from sleek marketing sites to full enterprise platforms.",
+      "Responsive websites and web applications shaped around your business needs, from clear service sites to interactive products.",
     fullDescription:
-      "We architect and deliver production-grade web applications end-to-end. Whether you need a pixel-perfect marketing site, a complex SaaS dashboard, or a high-traffic e-commerce platform, our team combines frontend finesse and backend muscle to ship products that perform.",
+      "We work with modern web tools to build responsive sites and applications. Project scope can range from a business website to a more interactive web product, depending on your needs.",
     icon: "Monitor",
     subServices: [
       "Frontend Web Applications (React, Next.js, Vue)",
@@ -32,10 +32,10 @@ export const services: Service[] = [
     ],
     techStack: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Tailwind CSS", "Vercel"],
     highlights: [
-      "Sub-2s page loads, 95+ Lighthouse scores",
-      "Mobile-first, fully responsive at every breakpoint",
-      "SEO-optimized architecture out of the box",
-      "Scalable from MVP to enterprise grade",
+      "Responsive layouts for desktop and mobile",
+      "Performance-conscious pages and assets",
+      "Search-friendly structure and metadata",
+      "Scope planned around your project needs",
     ],
     ctaLabel: "Build Your Web App",
   },
@@ -44,9 +44,9 @@ export const services: Service[] = [
     vertical: "engineering",
     title: "Mobile App Development",
     shortDescription:
-      "Native-quality iOS & Android apps that users love — built with React Native for cross-platform reach without compromise.",
+      "Cross-platform mobile app development using React Native and Expo, planned around the features your product needs.",
     fullDescription:
-      "From concept to App Store, we build polished mobile experiences that feel at home on every device. Using React Native and Expo, we deliver cross-platform apps with native performance, smooth animations, and deep OS integration.",
+      "We can help shape and build cross-platform mobile applications with React Native and Expo, from early product decisions through implementation.",
     icon: "Smartphone",
     subServices: [
       "iOS App Development (Swift, React Native)",
@@ -58,10 +58,10 @@ export const services: Service[] = [
     ],
     techStack: ["React Native", "Expo", "TypeScript", "Firebase", "Redux Toolkit", "Swift", "Kotlin"],
     highlights: [
-      "Single codebase, dual-platform delivery",
-      "Native animations locked at 60fps",
-      "Full App Store & Play Store submission support",
-      "Integrated analytics and A/B testing",
+      "One shared codebase for iOS and Android",
+      "Interfaces designed for mobile use",
+      "Guidance through app publishing requirements",
+      "Analytics and testing considered where appropriate",
     ],
     ctaLabel: "Build Your Mobile App",
   },
@@ -70,9 +70,9 @@ export const services: Service[] = [
     vertical: "engineering",
     title: "AI & Machine Learning",
     shortDescription:
-      "From GPT integrations to custom-trained models — we bring AI into your product in ways that actually move the needle.",
+      "AI and machine-learning prototypes, integrations, and data-driven features scoped to a clear use case.",
     fullDescription:
-      "We bridge the gap between state-of-the-art AI research and real-world product value. Whether you need to embed an LLM into your workflow or automate complex pipelines, our team delivers solutions that scale.",
+      "We explore practical AI and machine-learning applications, from integrating language models to building prototypes around a defined dataset or workflow.",
     icon: "Brain",
     subServices: [
       "LLM Integration (OpenAI, Claude, Gemini)",
@@ -85,10 +85,10 @@ export const services: Service[] = [
     ],
     techStack: ["Python", "PyTorch", "TensorFlow", "LangChain", "OpenAI API", "Hugging Face", "FastAPI", "Docker"],
     highlights: [
-      "Custom model training from scratch or fine-tuning",
-      "Production-ready MLOps & continuous retraining",
-      "Seamless integration into existing products",
-      "Responsible AI and explainability",
+      "Prototype or fine-tune models where project data supports it",
+      "Build and test workflows before planning production use",
+      "Connect AI features to an existing product when appropriate",
+      "Discuss limitations and responsible use up front",
     ],
     ctaLabel: "Add AI to Your Product",
   },
@@ -97,9 +97,9 @@ export const services: Service[] = [
     vertical: "creative",
     title: "Graphic Design & UI/UX",
     shortDescription:
-      "Stunning visual identities and intuitive digital interfaces that convert visitors into customers.",
+      "Graphic design and interface work for businesses that need a clear, consistent visual presence.",
     fullDescription:
-      "Design is strategy made visible. We craft brand identities, UI systems, and user experiences grounded in research and refined through iteration. From logo and brand guidelines to Figma prototypes ready for dev handoff, our design team makes your product unforgettable.",
+      "We create visual identity, interface, and campaign design. Depending on the brief, this can include logo concepts, brand guidance, social graphics, and Figma layouts for development.",
     icon: "Palette",
     subServices: [
       "Brand Identity & Logo Design",
@@ -111,10 +111,10 @@ export const services: Service[] = [
     ],
     techStack: ["Figma", "Adobe Illustrator", "Adobe Photoshop", "After Effects", "Framer", "Spline"],
     highlights: [
-      "User research-driven design decisions",
-      "Pixel-perfect Figma files with dev-ready specs",
-      "Full brand systems — logo to icon to color to type",
-      "A/B-testable UI variants for conversion optimization",
+      "Logo and visual identity design",
+      "Web and mobile interface layouts",
+      "Design files prepared for development handoff",
+      "Social graphics and campaign materials",
     ],
     ctaLabel: "Design My Brand",
   },
@@ -123,9 +123,9 @@ export const services: Service[] = [
     vertical: "creative",
     title: "Video Editing & Media",
     shortDescription:
-      "High-end video production and editing that makes your brand unforgettable — from social reels to cinematic brand films.",
+      "Video editing and motion graphics for social channels, product explainers, and brand communication.",
     fullDescription:
-      "In a scroll-heavy world, video is the sharpest weapon in your marketing arsenal. We produce and edit compelling video content — from fast-cut social reels and product explainers to full cinematic brand films and motion-graphics-rich corporate presentations.",
+      "We edit video and motion content for social media, product explainers, and brand communication. The format and production scope are agreed around each project.",
     icon: "Video",
     subServices: [
       "Brand Films & Cinematic Storytelling",
@@ -137,10 +137,10 @@ export const services: Service[] = [
     ],
     techStack: ["Adobe Premiere Pro", "After Effects", "DaVinci Resolve", "Cinema 4D", "Audition", "Capcut Pro"],
     highlights: [
-      "Cinema-grade color grading on every delivery",
-      "Platform-optimized exports for YouTube, Instagram, TikTok, and LinkedIn",
-      "Fast turnaround without quality compromise",
-      "Royalty-free music licensing included",
+      "Short-form and longer-form video edits",
+      "Motion graphics where they suit the brief",
+      "Exports prepared for agreed platforms",
+      "Music and asset licensing discussed per project",
     ],
     ctaLabel: "Create My Video",
   },

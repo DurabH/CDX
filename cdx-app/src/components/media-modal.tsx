@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import {
   ChevronLeft,
   ChevronRight,
@@ -332,7 +331,7 @@ export default function MediaModal({
           )}
 
           <span className="hidden sm:inline text-slate-500">
-            {isVideo ? "4K Ultra-HD Video" : "High-Resolution Graphic"} • Esc to close
+            {isVideo ? "Video" : "Image"} • Esc to close
           </span>
         </div>
 
