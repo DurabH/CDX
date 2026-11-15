@@ -938,14 +938,6 @@ html.lenis body {
   background: #151b26;
 }
 
-.founder-card__portrait::after {
-  position: absolute;
-  inset: 36% 0 0;
-  background: linear-gradient(transparent, rgba(5, 8, 14, 0.75));
-  content: "";
-  pointer-events: none;
-}
-
 .founder-card__portrait img {
   object-position: center 38%;
   transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -953,23 +945,6 @@ html.lenis body {
 
 .founder-card:hover .founder-card__portrait img {
   transform: scale(1.035);
-}
-
-.founder-card__portrait > span {
-  position: absolute;
-  z-index: 1;
-  bottom: 1rem;
-  left: 1.2rem;
-  border: 1px solid rgba(255, 255, 255, 0.24);
-  border-radius: 999px;
-  background: rgba(5, 8, 14, 0.48);
-  padding: 0.42rem 0.72rem;
-  color: white;
-  font-size: 0.67rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  backdrop-filter: blur(8px);
 }
 
 .founder-card__content {

@@ -9,8 +9,8 @@ export const founders: Founder[] = [
     portfolioUrl: "https://rajawaleed-101.github.io/My-Portfolio-2/",
     portfolioLabel: "View creative portfolio",
     portfolioDescription:
-      "Waleed's portfolio brings together website, graphic design, and video work — a hands-on mix of digital and visual craft.",
-    specialties: ["Web design", "Graphic design", "Video"],
+      "Waleed specializes in mobile apps, graphic design, and video editing, combining technical skill with a strong visual eye.",
+    specialties: ["Mobile apps", "Graphic design", "Video editing"],
   },
   {
     id: "durab-haider",
@@ -20,7 +20,13 @@ export const founders: Founder[] = [
     portfolioUrl: "https://durabhaiderportfolio.vercel.app/",
     portfolioLabel: "View portfolio",
     portfolioDescription:
-      "Durab's portfolio brings together AI and machine learning, autonomous agents, and full-stack development, with a focus on practical systems and human-centered design.",
-    specialties: ["AI & machine learning", "Autonomous agents", "Full-stack development"],
+      "Durab specializes in web development and AI/ML, with hands-on UI/UX and SEO skills and supporting experience in mobile apps.",
+    specialties: [
+      "Web development",
+      "AI & machine learning",
+      "Mobile apps",
+      "UI/UX",
+      "SEO",
+    ],
   },
 ];

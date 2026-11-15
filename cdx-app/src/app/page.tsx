@@ -277,7 +277,7 @@ function WorkShowcaseSection() {
       </div>
       <div className="work-showcase-track-viewport">
         <div className="work-showcase-track">
-          {showcaseItems.map((item, index) => (
+          {showcaseItems.map((item) => (
             <article className="work-showcase-card" key={item.discipline}>
               <div className="work-showcase-copy work-showcase-copy--studio">
                 <p className="work-showcase-copy__eyebrow">The CDX approach</p>
@@ -297,9 +297,6 @@ function WorkShowcaseSection() {
                 />
               </div>
               <div className="work-showcase-copy work-showcase-copy--work">
-                <p className="work-showcase-copy__eyebrow">
-                  {String(index + 1).padStart(2, "0")} / 04 · {item.discipline}
-                </p>
                 <ul className="work-showcase-points">
                   {item.points.map((point) => (
                     <li key={point}>{point}</li>
@@ -327,12 +324,13 @@ function FoundersSection() {
           Two disciplines. <span className="text-gradient-brand">One project team.</span>
         </h2>
         <p>
-          Waleed brings web and visual design. Durab brings software and AI
-          experience. Both portfolios are linked below.
+          Waleed focuses on mobile apps, graphic design, and video editing.
+          Durab focuses on web development and AI/ML, with hands-on UI/UX and
+          SEO skills and supporting experience in mobile apps.
         </p>
       </div>
       <div className="founders-grid">
-        {founders.map((founder, index) => (
+        {founders.map((founder) => (
           <article className="founder-card" key={founder.id} data-scroll-reveal>
             <div className="founder-card__portrait">
               <Image
@@ -343,7 +341,6 @@ function FoundersSection() {
                 quality={90}
                 className="object-cover"
               />
-              <span>Founder · 0{index + 1}</span>
             </div>
             <div className="founder-card__content">
               <h3>{founder.name}</h3>
