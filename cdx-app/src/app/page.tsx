@@ -1,248 +1,461 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Brain,
-  Monitor,
-  Palette,
-  Play,
-  ShieldCheck,
-  Sparkles,
-  Video,
-} from "lucide-react";
-import { useEffect, useRef, useState } from "react";
-import LogoAnimationVideo from "@/components/media/LogoAnimationVideo";
-import { services } from "@/data/services";
+import HomeScrollExperience from "@/components/home-scroll-experience";
+import HomeIntroOverlay from "@/components/media/HomeIntroOverlay";
+import ScrollScene, { type SceneVisual } from "@/components/scroll-scene";
+import { founders } from "@/data/founders";
+import { projects } from "@/data/projects";
 
-const highlightCards = [
-  { icon: Monitor, title: "Web development", text: "Responsive websites and web applications shaped around the brief." },
-  { icon: Brain, title: "AI & machine learning", text: "AI and machine-learning prototypes for clearly defined project needs." },
-  { icon: Palette, title: "Graphic design & UX", text: "Visual identities and interfaces made to communicate clearly." },
-  { icon: Video, title: "Video & motion", text: "Edited video and motion assets for company and social channels." },
+function sceneVisual(
+  src: string,
+  alt: string,
+  label: string,
+  position: SceneVisual["position"],
+  startX: number,
+  startY: number,
+  startRotateY: number,
+  startScale: number
+): SceneVisual {
+  return {
+    src,
+    alt,
+    label,
+    position,
+    startX,
+    startY,
+    startRotateX: 12,
+    startRotateY,
+    startScale,
+    endX: 0,
+    endY: 0,
+    endRotateX: 0,
+    endRotateY: 0,
+    endScale: 1,
+  };
+}
+
+const websiteVisuals: SceneVisual[] = [
+  sceneVisual(
+    "/images/portfolio/my-portfolio-2/website-preview.png",
+    "Preview of Waleed's creative portfolio website",
+    "Waleed's portfolio",
+    "back-left",
+    -35,
+    25,
+    28,
+    0.82
+  ),
+  sceneVisual(
+    "/images/portfolio/eventbooking-website/website-preview.png",
+    "EventSphere event booking website preview",
+    "EventSphere",
+    "center",
+    10,
+    -55,
+    -12,
+    0.9
+  ),
+  sceneVisual(
+    "/images/portfolio/gym-website/website-preview.png",
+    "Muscle Up Gym website preview",
+    "Muscle Up Gym",
+    "front-right",
+    45,
+    60,
+    -30,
+    0.8
+  ),
 ];
 
-const studioServices = [
-  "Websites & apps",
-  "AI & machine learning",
-  "Graphic design",
-  "Video",
-];
+const clientProjects = projects.filter((project) =>
+  [
+    "yaseen-engineering-consultancy",
+    "cad-sketch-by-ashir",
+  ].includes(project.id)
+);
 
-let introCheckedThisDocument = false;
-
-
-export default function HomePage() {
-  const [showIntro, setShowIntro] = useState(false);
-  const shouldPlayIntro = useRef<boolean | null>(null);
-
-  useEffect(() => {
-    if (shouldPlayIntro.current === null) {
-      shouldPlayIntro.current = !introCheckedThisDocument;
-      introCheckedThisDocument = true;
-    }
-
-    if (!shouldPlayIntro.current) return;
-
-    const fallback = window.setTimeout(() => setShowIntro(false), 15000);
-    const onVideoEnd = () => {
-      window.clearTimeout(fallback);
-      setShowIntro(false);
-    };
-
-    window.addEventListener("intro-video-ended", onVideoEnd);
-    setShowIntro(true);
-    return () => {
-      window.clearTimeout(fallback);
-      window.removeEventListener("intro-video-ended", onVideoEnd);
-    };
-  }, []);
+function AudienceSection() {
+  const audiences = [
+    {
+      number: "01",
+      title: "Individuals & creators",
+      summary:
+        "Launch a personal site, portfolio, app, or digital project without needing to arrive with every detail already figured out.",
+    },
+    {
+      number: "02",
+      title: "Startups & product teams",
+      summary:
+        "Shape an early idea into a website, MVP, mobile app, or focused AI prototype that can be tested against a real need.",
+    },
+    {
+      number: "03",
+      title: "Businesses & organizations",
+      summary:
+        "Improve how people find and use your services with a clearer website, a useful internal tool, or a practical workflow integration.",
+    },
+  ];
 
   return (
-    <div className="pb-20">
-      {showIntro && (
-        <div className="brand-intro" aria-hidden="true">
-          <div className="intro-video-stage">
-            <LogoAnimationVideo />
-          </div>
-        </div>
-      )}
+    <section className="audience-section" aria-labelledby="audience-title">
+      <div className="section-heading">
+        <p className="section-eyebrow">Who we work with</p>
+        <h2 id="audience-title">
+          Bring a goal, an idea, <span className="text-gradient-brand">or a problem to solve.</span>
+        </h2>
+        <p>
+          We work with people and teams at different stages. You do not need a
+          finished brief—we can help define a practical first step together.
+        </p>
+      </div>
+      <div className="audience-grid">
+        {audiences.map((audience) => (
+          <article className="audience-card" key={audience.number} data-scroll-reveal>
+            <span>{audience.number}</span>
+            <h3>{audience.title}</h3>
+            <p>{audience.summary}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
 
-      <div className={`site-content ${showIntro ? "site-content--dimmed" : "site-content--ready"}`}>
-      <section className="mx-auto max-w-7xl px-4 pt-10 sm:px-6 sm:pt-14 lg:px-8 lg:pt-16">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-14">
-          <div className="relative">
-            <div className="absolute -left-8 top-8 h-28 w-28 rounded-full bg-[#007AFF]/20 blur-3xl" />
-            <div className="absolute -right-4 bottom-0 h-24 w-24 rounded-full bg-[#00D4FF]/20 blur-3xl" />
-
-            <div className="relative inline-flex items-center gap-2 rounded-full border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-3 py-1.5 text-[10px] font-medium uppercase tracking-[0.2em] text-[#9fe8ff] sm:text-xs">
-              <Sparkles className="h-3.5 w-3.5" />
-              Strategy • Design • Growth
+function ClientWorkSection() {
+  return (
+    <section
+      id="client-work"
+      className="client-work-section"
+      aria-labelledby="client-work-title"
+    >
+      <div className="section-heading">
+        <p className="section-eyebrow">Client work</p>
+        <h2 id="client-work-title">
+          Two real businesses. <span className="text-gradient-brand">Two clearer presentations.</span>
+        </h2>
+        <p>
+          Websites for an engineering consultancy and a CAD designer—each
+          organized around the services their prospective clients need to see.
+        </p>
+      </div>
+      <div className="client-work-grid">
+        {clientProjects.map((project, index) => (
+          <article className="client-project-card" key={project.id} data-scroll-reveal>
+            <div className="client-project-card__top">
+              <span className="client-project-card__number">
+                0{index + 1}
+              </span>
+              <span className="client-project-card__category">
+                {project.category}
+              </span>
             </div>
-
-            <h1 className="mt-6 max-w-2xl text-4xl font-black leading-[0.92] tracking-[-0.06em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
-              Websites and digital work <span className="text-gradient-brand">built with care.</span>
-            </h1>
-
-            <p className="mt-6 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
-              We are a small, founder-led studio building websites for clients, exploring AI through project work, and creating design and video. You work directly with the people doing the work.
+            <h3>{project.title}</h3>
+            <p className="client-project-card__description">
+              {project.description}
             </p>
-
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#007AFF] to-[#00D4FF] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_0_32px_rgba(0,122,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_40px_rgba(0,212,255,0.35)]"
-              >
-                Book a consultation
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:border-[#00D4FF]/40 hover:bg-white/10"
-              >
-                <Play className="h-4 w-4" />
-                View our work
-              </Link>
-            </div>
-
-            <div className="mt-10 flex flex-wrap gap-3">
-              {studioServices.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-200"
-                >
-                  {item}
-                </div>
+            <ul>
+              {project.highlights.map((highlight) => (
+                <li key={highlight}>{highlight}</li>
               ))}
+            </ul>
+            {project.liveUrl && (
+              <a
+                className="client-project-card__link"
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Visit live project <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function TestimonialsSection() {
+  const testimonials = clientProjects.flatMap((project) => {
+    if (!project.clientFeedback) return [];
+
+    const [name, company] = project.clientFeedback.attribution.split(" · ");
+    if (!name || !company) return [];
+
+    return [{
+      name,
+      company,
+      quote: project.clientFeedback.summary,
+    }];
+  });
+
+  return (
+    <section className="testimonials-section" aria-labelledby="testimonials-title">
+      <div className="section-heading">
+        <p className="section-eyebrow">Client review drafts</p>
+        <h2 id="testimonials-title">
+          A better first impression, <span className="text-gradient-brand">in their words.</span>
+        </h2>
+        <p>
+          Suggested wording based on your brief. Confirm each review with the
+          client before publishing.
+        </p>
+      </div>
+      <div className="testimonials-grid">
+        {testimonials.map((testimonial) => (
+          <article className="testimonial-card" key={testimonial.name} data-scroll-reveal>
+            <div className="testimonial-card__quote-mark" aria-hidden="true">“</div>
+            <p className="testimonial-card__quote">{testimonial.quote}</p>
+            <div className="testimonial-card__person">
+              <h3>{testimonial.name}</h3>
+              <p>{testimonial.company}</p>
             </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
 
-          </div>
+function DeliverablesSection() {
+  const deliverables = [
+    {
+      number: "01",
+      kind: "WEB / DIGITAL",
+      title: "Websites & web apps",
+      description:
+        "Distinctive, responsive websites and web apps that make a product, service, or personal brand clear and easy to use.",
+      specs: ["UX / UI", "Responsive build", "Launch-ready"],
+    },
+    {
+      number: "02",
+      kind: "IOS / ANDROID",
+      title: "Mobile apps",
+      description:
+        "Useful mobile experiences shaped around real people, essential workflows, and the features worth building first.",
+      specs: ["Product flows", "iOS + Android", "MVP scope"],
+    },
+    {
+      number: "03",
+      kind: "GRAPHIC / BRAND",
+      title: "Graphic & brand design",
+      description:
+        "Visual identities, logos, and campaign graphics that give a brand a consistent, recognizable presence.",
+      specs: ["Identity systems", "Campaign graphics", "Digital assets"],
+    },
+    {
+      number: "04",
+      kind: "VIDEO / MOTION",
+      title: "Video & motion design",
+      description:
+        "Edited and designed video content for product stories, social campaigns, explainers, and digital launches.",
+      specs: ["Editing", "Motion graphics", "Social / web"],
+    },
+    {
+      number: "05",
+      kind: "APPLIED AI / ML",
+      title: "Applied AI & machine learning",
+      description:
+        "Focused prototypes and integrations for defined tasks. We check the data, limits, and costs first—and recommend simpler software when it fits better.",
+      specs: ["Defined use case", "Feasibility first", "Measured prototype"],
+    },
+  ];
 
-          <div className="relative">
-            <div className="absolute inset-0 -z-10 rounded-[2rem] bg-gradient-to-br from-[#007AFF]/30 via-[#00D4FF]/10 to-transparent blur-3xl" />
-            <div className="grid-faint rounded-[2rem] border border-white/10 bg-[#0f172a]/80 p-4 shadow-[0_40px_90px_rgba(0,0,0,0.42)] backdrop-blur-xl sm:p-5">
-              <div className="rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_top,_rgba(0,122,255,0.45),_transparent_36%),linear-gradient(135deg,#111827,#0B0F17)] p-4 sm:p-5">
-                <div className="mb-5 flex items-center justify-between border-b border-white/10 pb-4">
-                  <div>
-                    <p className="text-[10px] uppercase tracking-[0.22em] text-slate-400">How we work</p>
-                    <p className="mt-2 text-xl font-semibold text-white">Founder-led, hands-on</p>
-                  </div>
-                  <div className="rounded-full border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-[#9fe8ff]">
-                    Direct
-                  </div>
-                </div>
-
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {highlightCards.map(({ icon: Icon, title, text }) => (
-                    <div key={title} className="rounded-2xl border border-white/10 bg-white/5 p-4 transition duration-300 hover:border-[#00D4FF]/40 hover:bg-white/8">
-                      <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#007AFF] to-[#00D4FF] text-white shadow-[0_0_20px_rgba(0,122,255,0.35)]">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <h3 className="text-lg font-semibold text-white">{title}</h3>
-                      <p className="mt-2 text-sm leading-6 text-slate-300">{text}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-4 rounded-2xl border border-[#00D4FF]/20 bg-[#0b1220]/80 p-4">
-                  <p className="text-sm font-semibold text-white">
-                    Direct collaboration, from brief to handoff.
-                  </p>
-                  <p className="mt-2 text-xs leading-6 text-slate-400">
-                    Clear conversations, thoughtful scope, and the founders
-                    involved throughout the project.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto mt-18 max-w-7xl px-4 sm:mt-20 sm:px-6 lg:px-8">
-        <div className="grid gap-4 md:grid-cols-4">
-          {[
-            { label: "Websites", text: "Clear, responsive websites shaped around your business and customers." },
-            { label: "AI & machine learning", text: "Practical experiments and software projects using AI and data." },
-            { label: "Graphic design", text: "Visual identity, graphics, and design work for digital and print." },
-            { label: "Video", text: "Edited video and motion work for brands and online channels." },
-          ].map((item) => (
-            <div key={item.label} className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-5">
-              <p className="text-[10px] uppercase tracking-[0.2em] text-[#7dd3fc]">{item.label}</p>
-              <p className="mt-3 text-base leading-7 text-slate-200">{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto mt-16 max-w-7xl px-4 sm:mt-20 sm:px-6 lg:px-8">
-        <div className="mb-10 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7dd3fc]">
-              What we do
-            </p>
-            <h2 className="mt-3 max-w-2xl text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-              A small team with a practical mix of creative and technical skills.
-            </h2>
-          </div>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {services.map((service) => (
+  return (
+    <section
+      id="capabilities"
+      className="deliverables-section deliverables-section--cinematic"
+      aria-labelledby="deliverables-title"
+    >
+      <div className="section-heading">
+        <p className="section-eyebrow">What we deliver</p>
+        <h2 id="deliverables-title">
+          One team for <span className="text-gradient-brand">the full experience.</span>
+        </h2>
+        <p>
+          From a first visual identity to a finished website, app, or video,
+          bring the parts of your project together with one collaborative team.
+        </p>
+      </div>
+      <div className="deliverables-track-viewport">
+        <div className="deliverables-grid deliverables-track">
+          {deliverables.map((deliverable) => (
             <article
-              key={service.id}
-              className="group rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.18)] transition duration-300 hover:-translate-y-1 hover:border-[#00D4FF]/35 hover:bg-white/[0.05]"
+              className="deliverable-card"
+              key={deliverable.number}
             >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#007AFF] to-[#00D4FF] text-white shadow-[0_0_24px_rgba(0,122,255,0.35)]">
-                {service.icon === "Monitor" && <Monitor className="h-5 w-5" />}
-                {service.icon === "Smartphone" && <ShieldCheck className="h-5 w-5" />}
-                {service.icon === "Brain" && <Brain className="h-5 w-5" />}
-                {service.icon === "Palette" && <Palette className="h-5 w-5" />}
-                {service.icon === "Video" && <Video className="h-5 w-5" />}
+              <div className="deliverable-card__meta">
+                <span>{deliverable.number} / 05</span>
+                <span>{deliverable.kind}</span>
               </div>
-              <h3 className="text-xl font-semibold text-white">{service.title}</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-300">{service.shortDescription}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {service.techStack.slice(0, 3).map((tech) => (
-                  <span key={tech} className="rounded-full border border-white/10 bg-[#111827] px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-slate-300">
-                    {tech}
-                  </span>
-                ))}
+              <h3>{deliverable.title}</h3>
+              <p>{deliverable.description}</p>
+              <div className="deliverable-card__hud">
+                <span className="deliverable-card__hud-label">
+                  SCOPE / {deliverable.kind}
+                </span>
+                <ul aria-label={`${deliverable.title} capabilities`}>
+                  {deliverable.specs.map((spec) => (
+                    <li key={spec}>{spec}</li>
+                  ))}
+                </ul>
               </div>
             </article>
           ))}
         </div>
-      </section>
-
-      <section className="mx-auto mt-20 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-[2rem] border border-[#00D4FF]/20 bg-[linear-gradient(135deg,rgba(17,24,39,0.96),rgba(11,15,23,0.96))] p-8 shadow-[0_30px_80px_rgba(0,0,0,0.28)] md:p-10">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[#7dd3fc]">
-                Why CDX
-              </p>
-              <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">
-                Work directly with the people building your project.
-              </h2>
-            </div>
-            <div className="space-y-4 text-slate-300">
-              <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00D4FF]" />
-                <span>Clear strategic thinking before design and code go live.</span>
-              </div>
-              <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#007AFF]" />
-                <span>Real product collaboration across branding, UX, engineering, and delivery.</span>
-              </div>
-              <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-                <div className="mt-1 h-2.5 w-2.5 rounded-full bg-[#00D4FF]" />
-                <span>Clear communication and a considered handoff.</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       </div>
-    </div>
+      <Link href="/services" className="deliverables-link">
+        Explore all services <span aria-hidden="true">↗</span>
+      </Link>
+    </section>
+  );
+}
+
+function FoundersSection() {
+  return (
+    <section
+      id="founders"
+      className="founders-section"
+      aria-labelledby="founders-title"
+    >
+      <div className="section-heading founders-section__heading">
+        <p className="section-eyebrow">People behind the work</p>
+        <h2 id="founders-title">
+          Two disciplines. <span className="text-gradient-brand">One project team.</span>
+        </h2>
+        <p>
+          Waleed brings web and visual design. Durab brings software and AI
+          experience. Both portfolios are linked below.
+        </p>
+      </div>
+      <div className="founders-grid">
+        {founders.map((founder, index) => (
+          <article className="founder-card" key={founder.id} data-scroll-reveal>
+            <div className="founder-card__portrait">
+              <Image
+                src={founder.avatarImage}
+                alt={`Portrait of founder ${founder.name}`}
+                fill
+                sizes="(max-width: 700px) 90vw, 42vw"
+                quality={90}
+                className="object-cover"
+              />
+              <span>Founder · 0{index + 1}</span>
+            </div>
+            <div className="founder-card__content">
+              <h3>{founder.name}</h3>
+              <p>{founder.portfolioDescription}</p>
+              <div className="founder-card__specialties">
+                {founder.specialties?.map((specialty) => (
+                  <span key={specialty}>{specialty}</span>
+                ))}
+              </div>
+              <a
+                href={founder.portfolioUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="founder-card__link"
+              >
+                {founder.portfolioLabel} <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <HomeScrollExperience>
+      <div className="home-story">
+        <HomeIntroOverlay />
+        <ScrollScene
+          id="top"
+          number="01"
+          eyebrow="Brand · Video · Websites · Apps"
+          titleTag="h1"
+          title={
+            <>
+              Creative work.
+              <br />
+              <span className="text-gradient-brand">Built to move people.</span>
+            </>
+          }
+          description="We bring design and development together to create memorable brands, videos, websites, and mobile apps. Whether you are an individual, a growing team, or an established organization, we shape the work around what you need to make."
+          visuals={websiteVisuals}
+          details={[
+            "Graphic design, brand identity & video",
+            "Websites and mobile apps, designed and built",
+            "Applied AI when it solves a real problem",
+          ]}
+          actions={[
+            { href: "#client-work", label: "Explore our work" },
+            { href: "/contact", label: "Talk through an idea" },
+          ]}
+        />
+
+        <AudienceSection />
+        <ClientWorkSection />
+        <DeliverablesSection />
+        <TestimonialsSection />
+
+        <section className="process-section" aria-labelledby="process-title">
+          <div className="process-section__intro">
+            <p className="section-eyebrow">A direct way to work</p>
+            <h2 id="process-title">
+              Agree the goal.{" "}
+              <span className="text-gradient-brand">Keep the scope clear.</span>
+            </h2>
+            <p>
+              You work with the people designing and building the project. We
+              define deliverables up front and share progress at agreed review
+              points.
+            </p>
+          </div>
+          <ol className="process-steps">
+            {[
+              ["01", "Understand", "Talk through the goal, audience, and practical constraints."],
+              ["02", "Shape", "Agree the deliverables and a realistic project scope."],
+              ["03", "Make", "Design and build the work, sharing progress as it develops."],
+              ["04", "Review", "Check the details together and hand over the agreed work."],
+            ].map(([number, title, description]) => (
+              <li className="process-step" key={number} data-scroll-reveal>
+                <span>{number}</span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <FoundersSection />
+
+        <section className="home-contact" aria-labelledby="home-contact-title">
+          <div
+            className="home-contact__orb home-contact__orb--one"
+            aria-hidden="true"
+          />
+          <div
+            className="home-contact__orb home-contact__orb--two"
+            aria-hidden="true"
+          />
+          <p className="section-eyebrow">Have an idea or problem to solve?</p>
+          <h2 id="home-contact-title">
+            Let’s find
+            <br />
+            <span className="text-gradient-brand">the right first step.</span>
+          </h2>
+          <p>
+            Tell us what you want to build or improve. We’ll help shape a clear,
+            realistic scope before work begins.
+          </p>
+          <Link href="/contact" className="home-contact__button">
+            Start a conversation <span aria-hidden="true">↗</span>
+          </Link>
+        </section>
+      </div>
+    </HomeScrollExperience>
   );
 }

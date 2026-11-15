@@ -29,18 +29,13 @@ export default function MediaModal({
   mediaList = [],
   initialIndex = 0,
 }: MediaModalProps) {
-  const [currentIndex, setCurrentIndex] = useState(initialIndex);
+  const normalizedInitialIndex =
+    initialIndex >= 0 && initialIndex < mediaList.length ? initialIndex : 0;
+
+  const [currentIndex, setCurrentIndex] = useState(normalizedInitialIndex);
   const [viewMode, setViewMode] = useState<"player" | "grid">("player");
   const videoRef = useRef<HTMLVideoElement>(null);
   const filmstripRef = useRef<HTMLDivElement>(null);
-
-  // Sync index when initialIndex changes or modal opens
-  useEffect(() => {
-    if (isOpen) {
-      setCurrentIndex(initialIndex >= 0 && initialIndex < mediaList.length ? initialIndex : 0);
-      setViewMode("player");
-    }
-  }, [isOpen, initialIndex, mediaList.length]);
 
   // Keyboard navigation & body scroll lock
   useEffect(() => {

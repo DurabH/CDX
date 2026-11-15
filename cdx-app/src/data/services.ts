@@ -19,9 +19,9 @@ export const services: Service[] = [
     vertical: "engineering",
     title: "Web Development",
     shortDescription:
-      "Responsive websites and web applications shaped around your business needs, from clear service sites to interactive products.",
+      "Responsive websites and web applications for personal projects, startups, and organizations—from a focused portfolio to an interactive product.",
     fullDescription:
-      "We work with modern web tools to build responsive sites and applications. Project scope can range from a business website to a more interactive web product, depending on your needs.",
+      "We plan and build responsive websites and web applications for individuals, startups, and organizations. The scope can range from a personal portfolio or information site to a more interactive product, based on the people using it and the goal it needs to serve.",
     icon: "Monitor",
     subServices: [
       "Frontend Web Applications (React, Next.js, Vue)",
@@ -44,9 +44,9 @@ export const services: Service[] = [
     vertical: "engineering",
     title: "Mobile App Development",
     shortDescription:
-      "Cross-platform mobile app development using React Native and Expo, planned around the features your product needs.",
+      "Cross-platform apps for personal ventures, startup products, and organizations, scoped around a clear user need and essential workflows.",
     fullDescription:
-      "We can help shape and build cross-platform mobile applications with React Native and Expo, from early product decisions through implementation.",
+      "We help shape and build cross-platform applications with React Native and Expo, from early product decisions through implementation. We agree the essential user flows and platform requirements before expanding features.",
     icon: "Smartphone",
     subServices: [
       "iOS App Development (Swift, React Native)",
@@ -70,25 +70,25 @@ export const services: Service[] = [
     vertical: "engineering",
     title: "AI & Machine Learning",
     shortDescription:
-      "AI and machine-learning prototypes, integrations, and data-driven features scoped to a clear use case.",
+      "AI/ML prototypes for document search, image classification, or workflow automation—scoped to a real task and tested against available data before custom training.",
     fullDescription:
-      "We explore practical AI and machine-learning applications, from integrating language models to building prototypes around a defined dataset or workflow.",
+      "We start with the task, available data, and practical constraints—not an assumption that a model is needed. A project may use an existing model or API, a focused prototype, or custom training when the data and requirements justify it. We discuss evaluation, privacy, limitations, and running costs before recommending production work.",
     icon: "Brain",
     subServices: [
       "LLM Integration (OpenAI, Claude, Gemini)",
-      "Custom Model Training from Scratch",
-      "RAG Pipelines",
-      "Computer Vision & Image Recognition",
+      "Document Search & Retrieval (RAG)",
+      "Image Classification & Computer Vision Prototypes",
+      "Custom Training or Fine-Tuning When Justified",
       "Natural Language Processing (NLP)",
-      "AI Automation & Workflow Intelligence",
-      "Model Deployment & MLOps",
+      "Workflow Automation with Model/API Integrations",
+      "Prototype Evaluation & Integration",
     ],
     techStack: ["Python", "PyTorch", "TensorFlow", "LangChain", "OpenAI API", "Hugging Face", "FastAPI", "Docker"],
     highlights: [
-      "Prototype or fine-tune models where project data supports it",
-      "Build and test workflows before planning production use",
-      "Connect AI features to an existing product when appropriate",
-      "Discuss limitations and responsible use up front",
+      "Define one concrete task and how success will be evaluated",
+      "Check data quality, privacy, limitations, and cost before training",
+      "Prototype before committing to a production model",
+      "Recommend conventional software or automation when it is a better fit",
     ],
     ctaLabel: "Add AI to Your Product",
   },
@@ -97,7 +97,7 @@ export const services: Service[] = [
     vertical: "creative",
     title: "Graphic Design & UI/UX",
     shortDescription:
-      "Graphic design and interface work for businesses that need a clear, consistent visual presence.",
+      "Brand identity, interface design, and graphics for individuals, products, and organizations that need a coherent visual presence.",
     fullDescription:
       "We create visual identity, interface, and campaign design. Depending on the brief, this can include logo concepts, brand guidance, social graphics, and Figma layouts for development.",
     icon: "Palette",
@@ -123,7 +123,7 @@ export const services: Service[] = [
     vertical: "creative",
     title: "Video Editing & Media",
     shortDescription:
-      "Video editing and motion graphics for social channels, product explainers, and brand communication.",
+      "Video editing and motion graphics for creators, products, campaigns, and organizations.",
     fullDescription:
       "We edit video and motion content for social media, product explainers, and brand communication. The format and production scope are agreed around each project.",
     icon: "Video",

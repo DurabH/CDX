@@ -161,9 +161,9 @@ export const projects: PortfolioProject[] = [
     repositoryUrl: "https://github.com/DurabH/YEC_Website.git",
     liveUrl: "https://www.yaseeneng.com",
     clientFeedback: {
-      attribution: "Project client",
+      attribution: "Mir Afzal Khan Turi · Yaseen Engineering Consultancy",
       summary:
-        "The client said the website matched his requirements and that he was happy with the service.",
+        "We’re very happy with the website. It presents our engineering services clearly and gives the consultancy a more polished, professional presence online.",
     },
     media: [],
     mediaNote: "Additional project visuals will be added later.",
@@ -183,9 +183,9 @@ export const projects: PortfolioProject[] = [
     repositoryUrl: "https://github.com/DurabH/CAD_Sketch_By_Ashir.git",
     liveUrl: "https://cad-sketch-by-ashir.vercel.app/",
     clientFeedback: {
-      attribution: "Local client",
+      attribution: "Ali Ashir · CAD Sketch by Ashir",
       summary:
-        "The client reported being happy with the finished website and service.",
+        "I’m really happy with the website. It presents my CAD and design services clearly, and the finished result feels polished and professional.",
     },
     media: [],
     mediaNote: "Additional project visuals will be added later.",

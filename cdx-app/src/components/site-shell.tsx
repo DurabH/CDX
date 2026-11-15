@@ -49,10 +49,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
-
   return (
     <div className="min-h-screen bg-[#0B0F17] text-white">
       <ScrollProgress />
@@ -79,6 +75,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={() => setMobileOpen(false)}
                   className={`relative text-sm font-medium transition ${
                     active ? "text-white" : "text-slate-300 hover:text-white"
                   }`}
@@ -125,6 +122,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
                   <Link
                     key={item.href}
                     href={item.href}
+                    onClick={() => setMobileOpen(false)}
                     className={`rounded-xl px-3 py-2 text-sm font-medium ${
                       pathname === item.href
                         ? "bg-white/5 text-white"
@@ -168,7 +166,9 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
               </div>
             </div>
             <p className="max-w-md text-sm leading-7 text-slate-400">
-              Creative. Develop. Experience. A founder-led studio for websites, AI projects, design, and video.
+              Websites, apps, and focused AI/ML prototypes for individuals,
+              startups, and organizations. We start with the goal and choose
+              practical tools to meet it.
             </p>
           </div>
 

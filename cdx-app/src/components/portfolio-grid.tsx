@@ -91,7 +91,7 @@ export default function PortfolioGrid({ projects }: { projects: PortfolioProject
           return (
             <article
               key={project.id}
-              className={`group flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 transition duration-300 hover:-translate-y-1 hover:border-[#00D4FF]/30 hover:bg-white/[0.08] sm:p-6 ${
+              className={`group flex min-w-0 w-full flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 transition duration-300 hover:-translate-y-1 hover:border-[#00D4FF]/30 hover:bg-white/[0.08] sm:p-6 ${
                 isVideoProject && activeTab === "video" ? "md:col-span-2" : ""
               }`}
             >
@@ -243,7 +243,7 @@ export default function PortfolioGrid({ projects }: { projects: PortfolioProject
                     </button>
 
                     {/* Preview Thumbnail Row (Clicking any thumbnail directly opens that item in the popup) */}
-                    <div className="mt-3 flex items-center gap-2 overflow-x-auto pb-1">
+                    <div className="mt-3 flex min-w-0 items-center gap-2 overflow-x-auto pb-1">
                       {project.media.slice(0, 5).map((media, idx) => (
                         <button
                           key={media.src}

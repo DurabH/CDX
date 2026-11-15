@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: "%s | CDX",
   },
   description:
-    "CDX is a founder-led studio building websites, AI projects, graphic design, and video work.",
+    "CDX builds websites, mobile apps, AI/ML prototypes, and visual design for individuals, startups, and organizations. Practical digital work, scoped around a real goal.",
   icons: {
     icon: "/favicon.ico",
   },
@@ -29,6 +29,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-screen bg-[#0B0F17] text-white antialiased">

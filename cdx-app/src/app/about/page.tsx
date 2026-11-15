@@ -131,7 +131,7 @@ export default function AboutPage() {
                 The people behind the work
               </p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Meet the co-founders
+                Meet the founders
               </h2>
             </div>
             <p className="max-w-lg text-sm leading-7 text-slate-400 sm:text-base">
@@ -169,7 +169,7 @@ export default function AboutPage() {
                       className="absolute inset-0 bg-gradient-to-t from-[#080c14]/35 via-transparent to-transparent"
                     />
                     <span className="absolute bottom-4 left-4 rounded-full border border-white/15 bg-[#080c14]/65 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/90 backdrop-blur">
-                      Co-Founder
+                      Founder
                     </span>
                   </div>
 

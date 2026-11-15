@@ -4,7 +4,7 @@ export const founders: Founder[] = [
   {
     id: "waleed-bin-naeem",
     name: "Waleed Bin Naeem",
-    role: "Co-Founder",
+    role: "Founder",
     avatarImage: "/images/founders/waleed-bin-naeem/waleed.jpeg",
     portfolioUrl: "https://rajawaleed-101.github.io/My-Portfolio-2/",
     portfolioLabel: "View creative portfolio",
@@ -15,7 +15,7 @@ export const founders: Founder[] = [
   {
     id: "durab-haider",
     name: "Durab Haider",
-    role: "Co-Founder",
+    role: "Founder",
     avatarImage: "/images/founders/durab-haider/portrait.jpg",
     portfolioUrl: "https://durabhaiderportfolio.vercel.app/",
     portfolioLabel: "View portfolio",

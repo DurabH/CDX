@@ -4,7 +4,8 @@ import { creativeServices, engineeringServices, services } from "@/data/services
 
 export const metadata = {
   title: "Services | CDX",
-  description: "Web, AI, design, and video services from a founder-led studio.",
+  description:
+    "Websites, mobile apps, AI/ML prototypes, brand design, and video for individuals, startups, and organizations.",
 };
 
 export default function ServicesPage() {
@@ -13,37 +14,35 @@ export default function ServicesPage() {
       <section className="mb-20">
         <div className="inline-flex items-center gap-2 rounded-full border border-[#00D4FF]/30 bg-[#00D4FF]/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-[#8fe3ff]">
           <Sparkles className="h-3.5 w-3.5" />
-          Services
+          Websites · Apps · Applied AI
         </div>
         <h1 className="mt-6 max-w-3xl text-4xl font-black tracking-tight text-white md:text-6xl">
-          Web, AI, design, and video for projects with a clear purpose.
+          From a personal website to an AI prototype—start with the problem.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-          We work across web development, AI, design, and video, with project scope shaped around each client’s goals and resources.
+          We work with individuals, startups, and organizations to build
+          websites, apps, and digital products. Bring a clear goal or an early
+          idea; we’ll recommend a right-sized approach. Brand design and video
+          can support the product when they help.
         </p>
       </section>
 
       <div className="grid gap-8 lg:grid-cols-2">
-        <section className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
+        <section className="min-w-0 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
           <p className="mb-6 text-sm font-semibold uppercase tracking-[0.22em] text-[#7dd3fc]">
-            Engineering vertical
+            Websites, apps & software
           </p>
           <div className="space-y-5">
             {engineeringServices.map((service) => (
               <div
                 key={service.id}
-                className="rounded-2xl border border-white/10 bg-[#111827] p-5"
+                className="min-w-0 rounded-2xl border border-white/10 bg-[#111827] p-5"
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h2 className="text-xl font-semibold text-white">{service.title}</h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-300">
-                      {service.shortDescription}
-                    </p>
-                  </div>
-                  <span className="rounded-full border border-[#007AFF]/40 bg-[#007AFF]/10 px-2.5 py-1 text-xs uppercase tracking-[0.12em] text-[#8fe3ff]">
-                    {service.id}
-                  </span>
+                <div className="min-w-0">
+                  <h2 className="text-xl font-semibold text-white">{service.title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                    {service.shortDescription}
+                  </p>
                 </div>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {service.techStack.slice(0, 4).map((tech) => (
@@ -60,26 +59,21 @@ export default function ServicesPage() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
+        <section className="min-w-0 rounded-3xl border border-white/10 bg-white/5 p-6 md:p-8">
           <p className="mb-6 text-sm font-semibold uppercase tracking-[0.22em] text-[#7dd3fc]">
-            Creative vertical
+            Brand & visual communication
           </p>
           <div className="space-y-5">
             {creativeServices.map((service) => (
               <div
                 key={service.id}
-                className="rounded-2xl border border-white/10 bg-[#111827] p-5"
+                className="min-w-0 rounded-2xl border border-white/10 bg-[#111827] p-5"
               >
-                <div className="flex items-start justify-between gap-3">
-                  <div>
-                    <h2 className="text-xl font-semibold text-white">{service.title}</h2>
-                    <p className="mt-2 text-sm leading-6 text-slate-300">
-                      {service.shortDescription}
-                    </p>
-                  </div>
-                  <span className="rounded-full border border-[#00D4FF]/40 bg-[#00D4FF]/10 px-2.5 py-1 text-xs uppercase tracking-[0.12em] text-[#8fe3ff]">
-                    {service.id}
-                  </span>
+                <div className="min-w-0">
+                  <h2 className="text-xl font-semibold text-white">{service.title}</h2>
+                  <p className="mt-2 text-sm leading-6 text-slate-300">
+                    {service.shortDescription}
+                  </p>
                 </div>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {service.techStack.slice(0, 4).map((tech) => (
