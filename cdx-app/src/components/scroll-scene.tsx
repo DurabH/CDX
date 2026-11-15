@@ -152,17 +152,12 @@ export default function ScrollScene({
         </div>
 
         {visuals.length > 0 && (
-          <div className="scroll-scene__stage" aria-label="Selected digital project previews">
+          <div
+            className="scroll-scene__stage"
+            aria-label="Selected digital project previews"
+          >
             <div className="scroll-scene__glow" aria-hidden="true" />
             <div className="scroll-scene__grid" aria-hidden="true" />
-            <aside className="scroll-scene__hud" aria-label="CDX project capabilities">
-              <span>CDX / DIGITAL STUDIO</span>
-              <strong>Brand · Motion · Web · Mobile</strong>
-              <span className="scroll-scene__hud-status">
-                <i aria-hidden="true" />
-                Strategy through launch
-              </span>
-            </aside>
             {visuals.map((visual) => (
               <SceneCard
                 key={`${id}-${visual.label}`}

@@ -67,6 +67,45 @@ const websiteVisuals: SceneVisual[] = [
   ),
 ];
 
+const showcaseItems = [
+  {
+    discipline: "FOOD / BURGER CAMPAIGN",
+    points: [
+      "Bold, appetite-led product art direction.",
+      "A clear campaign made to catch attention.",
+    ],
+    src: "/images/portfolio/poster-designs/restaurant-brand-1.jpeg",
+    alt: "Smash Monster burger promotional poster",
+  },
+  {
+    discipline: "CINEMATIC / NARRATIVE",
+    points: [
+      "Concept-driven cinematic storytelling.",
+      "Atmosphere shaped through image and typography.",
+    ],
+    src: "/images/portfolio/poster-designs/hopeless-poster.jpg",
+    alt: "Hopeless cinematic narrative poster featuring a classical sculpture",
+  },
+  {
+    discipline: "FOOD / CHICKEN CAMPAIGN",
+    points: [
+      "Product-first campaign composition.",
+      "Clear messaging made for quick recognition.",
+    ],
+    src: "/images/portfolio/poster-designs/restaurant-brand-2.jpeg",
+    alt: "Chicken burger promotional poster",
+  },
+  {
+    discipline: "FASHION / EDITORIAL",
+    points: [
+      "Confident, portrait-led art direction.",
+      "A polished balance of color and typography.",
+    ],
+    src: "/images/portfolio/poster-designs/girl-poster.jpg",
+    alt: "High-fashion editorial portrait poster",
+  },
+] as const;
+
 const clientProjects = projects.filter((project) =>
   [
     "yaseen-engineering-consultancy",
@@ -217,86 +256,53 @@ function TestimonialsSection() {
   );
 }
 
-function DeliverablesSection() {
-  const deliverables = [
-    {
-      number: "01",
-      kind: "WEB / DIGITAL",
-      title: "Websites & web apps",
-      description:
-        "Distinctive, responsive websites and web apps that make a product, service, or personal brand clear and easy to use.",
-      specs: ["UX / UI", "Responsive build", "Launch-ready"],
-    },
-    {
-      number: "02",
-      kind: "IOS / ANDROID",
-      title: "Mobile apps",
-      description:
-        "Useful mobile experiences shaped around real people, essential workflows, and the features worth building first.",
-      specs: ["Product flows", "iOS + Android", "MVP scope"],
-    },
-    {
-      number: "03",
-      kind: "GRAPHIC / BRAND",
-      title: "Graphic & brand design",
-      description:
-        "Visual identities, logos, and campaign graphics that give a brand a consistent, recognizable presence.",
-      specs: ["Identity systems", "Campaign graphics", "Digital assets"],
-    },
-    {
-      number: "04",
-      kind: "VIDEO / MOTION",
-      title: "Video & motion design",
-      description:
-        "Edited and designed video content for product stories, social campaigns, explainers, and digital launches.",
-      specs: ["Editing", "Motion graphics", "Social / web"],
-    },
-    {
-      number: "05",
-      kind: "APPLIED AI / ML",
-      title: "Applied AI & machine learning",
-      description:
-        "Focused prototypes and integrations for defined tasks. We check the data, limits, and costs first—and recommend simpler software when it fits better.",
-      specs: ["Defined use case", "Feasibility first", "Measured prototype"],
-    },
-  ];
-
+function WorkShowcaseSection() {
   return (
     <section
-      id="capabilities"
-      className="deliverables-section deliverables-section--cinematic"
-      aria-labelledby="deliverables-title"
+      id="showcase"
+      className="work-showcase-section work-showcase-section--cinematic"
+      aria-labelledby="showcase-title"
     >
-      <div className="section-heading">
-        <p className="section-eyebrow">What we deliver</p>
-        <h2 id="deliverables-title">
-          One team for <span className="text-gradient-brand">the full experience.</span>
-        </h2>
-        <p>
-          From a first visual identity to a finished website, app, or video,
-          bring the parts of your project together with one collaborative team.
-        </p>
+      <div className="work-showcase-heading">
+        <div className="section-heading">
+          <p className="section-eyebrow">Scroll through selected work</p>
+          <h2 id="showcase-title">
+            From first impression{" "}
+            <span className="text-gradient-brand">to final frame.</span>
+          </h2>
+        </div>
+        <Link href="/portfolio" className="work-showcase-link">
+          View all work <span aria-hidden="true">↗</span>
+        </Link>
       </div>
-      <div className="deliverables-track-viewport">
-        <div className="deliverables-grid deliverables-track">
-          {deliverables.map((deliverable) => (
-            <article
-              className="deliverable-card"
-              key={deliverable.number}
-            >
-              <div className="deliverable-card__meta">
-                <span>{deliverable.number} / 05</span>
-                <span>{deliverable.kind}</span>
+      <div className="work-showcase-track-viewport">
+        <div className="work-showcase-track">
+          {showcaseItems.map((item, index) => (
+            <article className="work-showcase-card" key={item.discipline}>
+              <div className="work-showcase-copy work-showcase-copy--studio">
+                <p className="work-showcase-copy__eyebrow">The CDX approach</p>
+                <h3>Thoughtful work, made with purpose.</h3>
+                <p>
+                  Strategy, design, and technology—crafted with care from
+                  brief to final finish.
+                </p>
               </div>
-              <h3>{deliverable.title}</h3>
-              <p>{deliverable.description}</p>
-              <div className="deliverable-card__hud">
-                <span className="deliverable-card__hud-label">
-                  SCOPE / {deliverable.kind}
-                </span>
-                <ul aria-label={`${deliverable.title} capabilities`}>
-                  {deliverable.specs.map((spec) => (
-                    <li key={spec}>{spec}</li>
+              <div className="work-showcase-card__media">
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 900px) 92vw, 48vw"
+                  className="work-showcase-card__image"
+                />
+              </div>
+              <div className="work-showcase-copy work-showcase-copy--work">
+                <p className="work-showcase-copy__eyebrow">
+                  {String(index + 1).padStart(2, "0")} / 04 · {item.discipline}
+                </p>
+                <ul className="work-showcase-points">
+                  {item.points.map((point) => (
+                    <li key={point}>{point}</li>
                   ))}
                 </ul>
               </div>
@@ -304,9 +310,6 @@ function DeliverablesSection() {
           ))}
         </div>
       </div>
-      <Link href="/services" className="deliverables-link">
-        Explore all services <span aria-hidden="true">↗</span>
-      </Link>
     </section>
   );
 }
@@ -391,14 +394,14 @@ export default function HomePage() {
             "Applied AI when it solves a real problem",
           ]}
           actions={[
-            { href: "#client-work", label: "Explore our work" },
+            { href: "#showcase", label: "Explore our work" },
             { href: "/contact", label: "Talk through an idea" },
           ]}
         />
 
+        <WorkShowcaseSection />
         <AudienceSection />
         <ClientWorkSection />
-        <DeliverablesSection />
         <TestimonialsSection />
 
         <section className="process-section" aria-labelledby="process-title">
