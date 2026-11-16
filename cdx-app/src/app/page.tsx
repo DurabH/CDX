@@ -70,6 +70,9 @@ const websiteVisuals: SceneVisual[] = [
 const showcaseItems = [
   {
     discipline: "FOOD / BURGER CAMPAIGN",
+    title: "Make cravings impossible to ignore.",
+    description:
+      "A punchy, high-contrast hero shot gives the burger the spotlight and the promotion a clear, fast read.",
     points: [
       "Bold, appetite-led product art direction.",
       "A clear campaign made to catch attention.",
@@ -79,6 +82,9 @@ const showcaseItems = [
   },
   {
     discipline: "CINEMATIC / NARRATIVE",
+    title: "Let the silence do the talking.",
+    description:
+      "A classical portrait, stark contrast, and restrained type build tension before a single frame moves.",
     points: [
       "Concept-driven cinematic storytelling.",
       "Atmosphere shaped through image and typography.",
@@ -88,6 +94,9 @@ const showcaseItems = [
   },
   {
     discipline: "FOOD / CHICKEN CAMPAIGN",
+    title: "Turn the offer into the hook.",
+    description:
+      "Warm color and a close-up chicken burger lead with appetite, while concise messaging stays easy to scan.",
     points: [
       "Product-first campaign composition.",
       "Clear messaging made for quick recognition.",
@@ -97,6 +106,9 @@ const showcaseItems = [
   },
   {
     discipline: "FASHION / EDITORIAL",
+    title: "A portrait with its own point of view.",
+    description:
+      "Editorial styling and confident type frame the subject with a bold, contemporary fashion mood.",
     points: [
       "Confident, portrait-led art direction.",
       "A polished balance of color and typography.",
@@ -280,12 +292,9 @@ function WorkShowcaseSection() {
           {showcaseItems.map((item) => (
             <article className="work-showcase-card" key={item.discipline}>
               <div className="work-showcase-copy work-showcase-copy--studio">
-                <p className="work-showcase-copy__eyebrow">The CDX approach</p>
-                <h3>Thoughtful work, made with purpose.</h3>
-                <p>
-                  Strategy, design, and technology—crafted with care from
-                  brief to final finish.
-                </p>
+                <p className="work-showcase-copy__eyebrow">{item.discipline}</p>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
               </div>
               <div className="work-showcase-card__media">
                 <Image
@@ -420,7 +429,8 @@ export default function HomePage() {
               ["01", "Understand", "Talk through the goal, audience, and practical constraints."],
               ["02", "Shape", "Agree the deliverables and a realistic project scope."],
               ["03", "Make", "Design and build the work, sharing progress as it develops."],
-              ["04", "Review", "Check the details together and hand over the agreed work."],
+              ["04", "Review", "Check the details together and make final refinements."],
+              ["05", "Deliver", "Launch or hand over the finished work, including the agreed files and next steps."],
             ].map(([number, title, description]) => (
               <li className="process-step" key={number} data-scroll-reveal>
                 <span>{number}</span>

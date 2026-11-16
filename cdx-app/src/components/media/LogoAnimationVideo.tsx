@@ -2,6 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 
+const INTRO_DISPLAY_SECONDS = 3;
+const INTRO_END_TRIM_SECONDS = 0.5;
+const DEFAULT_PLAYBACK_RATE = 3.2;
+
 export default function LogoAnimationVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(false);
@@ -10,7 +14,19 @@ export default function LogoAnimationVideo() {
     const video = videoRef.current;
     if (!video) return;
 
-    video.playbackRate = 2;
+    video.playbackRate = DEFAULT_PLAYBACK_RATE;
+    const adjustPlaybackRate = () => {
+      if (
+        Number.isFinite(video.duration) &&
+        video.duration > INTRO_END_TRIM_SECONDS
+      ) {
+        video.playbackRate =
+          (video.duration - INTRO_END_TRIM_SECONDS) / INTRO_DISPLAY_SECONDS;
+      }
+    };
+
+    video.addEventListener("loadedmetadata", adjustPlaybackRate);
+    adjustPlaybackRate();
     video.muted = false;
     video.play().catch(() => {
       video.muted = true;
@@ -19,6 +35,10 @@ export default function LogoAnimationVideo() {
         window.dispatchEvent(new Event("intro-video-ended"));
       });
     });
+
+    return () => {
+      video.removeEventListener("loadedmetadata", adjustPlaybackRate);
+    };
   }, []);
 
   const handleUnmute = () => {
@@ -36,7 +56,7 @@ export default function LogoAnimationVideo() {
     const video = videoRef.current;
     if (!video || !Number.isFinite(video.duration)) return;
 
-    if (video.duration - video.currentTime <= 1) {
+    if (video.duration - video.currentTime <= INTRO_END_TRIM_SECONDS) {
       video.pause();
       window.dispatchEvent(new Event("intro-video-ended"));
     }

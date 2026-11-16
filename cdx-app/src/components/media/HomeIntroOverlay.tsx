@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import LogoAnimationVideo from "./LogoAnimationVideo";
 
+const INTRO_MAX_DURATION_MS = 3000;
 let introCheckedThisDocument = false;
 
 export default function HomeIntroOverlay() {
@@ -17,7 +18,10 @@ export default function HomeIntroOverlay() {
 
     if (!shouldPlayIntro.current) return;
 
-    const fallback = window.setTimeout(() => setShowIntro(false), 15000);
+    const fallback = window.setTimeout(
+      () => setShowIntro(false),
+      INTRO_MAX_DURATION_MS
+    );
     const onVideoEnd = () => {
       window.clearTimeout(fallback);
       setShowIntro(false);

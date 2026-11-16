@@ -496,6 +496,14 @@ html.lenis body {
   line-height: 1.75;
 }
 
+.testimonial-card__quote {
+  color: #d3deeb;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  font-style: italic;
+  line-height: 1.7;
+}
+
 .work-showcase-section--cinematic {
   padding-block: clamp(5rem, 11vw, 10rem);
 }
@@ -566,7 +574,7 @@ html.lenis body {
   margin: 0;
   color: #79dfff;
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 0.62rem;
+  font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   line-height: 1.6;
@@ -682,8 +690,9 @@ html.lenis body {
 
 .testimonial-card__quote-mark {
   color: rgba(125, 211, 252, 0.84);
-  font-family: var(--font-sans), sans-serif;
-  font-size: 3rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.5rem;
+  font-style: italic;
   line-height: 1;
 }
 
@@ -1149,12 +1158,27 @@ html.lenis body {
     flex: 0 0 100%;
     height: 100%;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr) auto;
     gap: 0.5rem;
   }
 
   .work-showcase-section--cinematic.is-horizontal .work-showcase-copy--studio {
-    display: none;
+    width: 100%;
+    margin: 0;
+  }
+
+  .work-showcase-section--cinematic.is-horizontal .work-showcase-copy--studio h3 {
+    padding-top: 0.35rem;
+    font-size: clamp(1rem, 4.7vw, 1.25rem);
+    letter-spacing: -0.035em;
+    line-height: 1.15;
+  }
+
+  .work-showcase-section--cinematic.is-horizontal .work-showcase-copy--studio > p:not(.work-showcase-copy__eyebrow) {
+    margin-top: 0.35rem;
+    color: #cbd5e1;
+    font-size: 0.82rem;
+    line-height: 1.4;
   }
 
   .work-showcase-section--cinematic.is-horizontal .work-showcase-card__media {
@@ -1176,7 +1200,7 @@ html.lenis body {
   }
 
   .work-showcase-section--cinematic.is-horizontal .work-showcase-points li {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
   }
 }
 
