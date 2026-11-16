@@ -58,6 +58,45 @@ export const metadata = {
     "Meet the founders of CDX and learn about our thoughtful, hands-on approach to digital work.",
 };
 
+function FounderMessage() {
+  return (
+    <section
+      className="rounded-[2rem] border border-[#00D4FF]/15 bg-[linear-gradient(110deg,rgba(0,122,255,0.1),rgba(15,23,42,0.7)_55%)] p-6 sm:p-10 lg:p-12"
+      aria-labelledby="founder-message-title"
+    >
+      <div className="max-w-4xl">
+        <p
+          className="text-xs font-semibold uppercase tracking-[0.22em] text-[#7dd3fc] sm:text-sm"
+        >
+          A message from our founders
+        </p>
+        <h2
+          id="founder-message-title"
+          className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+        >
+          Founders&apos; message
+        </h2>
+        <blockquote className="mt-6 border-l-2 border-[#00D4FF]/50 pl-5 text-base leading-8 text-slate-200 sm:pl-7 sm:text-lg sm:leading-9">
+          <p>
+            Our journey at CDX began with a simple yet powerful vision: to build
+            a company driven by genuine heart, where client happiness is the
+            ultimate benchmark of success. Today, our core objective remains
+            unchanged—to transform your ideas into complete, end-to-end
+            solutions that help your business thrive. Every step of the way, we
+            stay relentlessly focused on execution, pouring our full dedication
+            into every detail until we deliver nothing short of perfection and
+            leave you truly thrilled with the result.
+          </p>
+          <footer className="mt-6 text-sm font-semibold text-white">
+            Durab Haider &amp; Waleed Bin Naeem{" "}
+            <span className="text-slate-400">· Co-founders, CDX</span>
+          </footer>
+        </blockquote>
+      </div>
+    </section>
+  );
+}
+
 export default function AboutPage() {
   return (
     <div className="relative isolate overflow-hidden">
@@ -124,8 +163,54 @@ export default function AboutPage() {
           </div>
         </section>
 
+        <section className="mt-20 sm:mt-24" aria-labelledby="mission-vision-title">
+          <div className="mb-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#7dd3fc] sm:text-sm">
+              Our purpose
+            </p>
+            <h2
+              id="mission-vision-title"
+              className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+            >
+              Mission &amp; vision
+            </h2>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            <article className="rounded-[1.5rem] border border-white/10 bg-[#0f172a]/70 p-6 sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">
+                Our mission
+              </p>
+              <h3 className="mt-3 text-xl font-semibold leading-snug text-white sm:text-2xl">
+                Turn ideas into useful, end-to-end work.
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300">
+                Help people and businesses shape ideas into complete digital
+                solutions, bringing strategy, design, and technology together
+                from first brief to final handoff.
+              </p>
+            </article>
+            <article className="rounded-[1.5rem] border border-white/10 bg-[#0f172a]/70 p-6 sm:p-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#7dd3fc]">
+                Our vision
+              </p>
+              <h3 className="mt-3 text-xl font-semibold leading-snug text-white sm:text-2xl">
+                A studio built on trust, care, and craft.
+              </h3>
+              <p className="mt-3 text-sm leading-7 text-slate-300">
+                Build lasting client relationships through thoughtful work,
+                honest collaboration, and digital experiences that help people
+                and businesses move forward.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <div className="mt-20 sm:mt-24">
+          <FounderMessage />
+        </div>
+
         <section className="mt-20 sm:mt-24">
-          <div className="mb-8 flex flex-col gap-3 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+          <div className="mb-8 flex flex-col gap-3 sm:mb-10">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#7dd3fc] sm:text-sm">
                 The people behind the work
@@ -140,8 +225,8 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2">
-            {founders.map((founder) => (
+          <div className="grid gap-8">
+            {[...founders].reverse().map((founder) => (
               <article
                 key={founder.id}
                 className="group overflow-hidden rounded-[1.75rem] border border-white/10 bg-[#0f172a]/70 transition duration-300 hover:border-[#00D4FF]/25 hover:bg-[#111a2b]"
@@ -158,6 +243,11 @@ export default function AboutPage() {
                       fill
                       quality={90}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 40vw, 260px"
+                      style={
+                        founder.id === "durab-haider"
+                          ? { objectPosition: "center 39%" }
+                          : undefined
+                      }
                       className={`object-cover transition duration-500 ${
                         founder.id === "waleed-bin-naeem"
                           ? "scale-[0.94] group-hover:scale-[0.97]"

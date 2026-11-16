@@ -419,18 +419,18 @@ export default function HomePage() {
               <span className="text-gradient-brand">Keep the scope clear.</span>
             </h2>
             <p>
-              You work with the people designing and building the project. We
-              define deliverables up front and share progress at agreed review
-              points.
+              Work directly with the people shaping your project. We set a clear
+              scope together, share progress as it takes shape, and stay with it
+              through final handoff.
             </p>
           </div>
           <ol className="process-steps">
             {[
-              ["01", "Understand", "Talk through the goal, audience, and practical constraints."],
-              ["02", "Shape", "Agree the deliverables and a realistic project scope."],
-              ["03", "Make", "Design and build the work, sharing progress as it develops."],
-              ["04", "Review", "Check the details together and make final refinements."],
-              ["05", "Deliver", "Launch or hand over the finished work, including the agreed files and next steps."],
+              ["01", "Understand", "Start with the real goal, the people it serves, and the constraints that matter."],
+              ["02", "Shape", "Turn the conversation into a clear plan, with focused deliverables and a scope that fits."],
+              ["03", "Make", "Build and refine in thoughtful stages, sharing progress while the idea comes to life."],
+              ["04", "Review", "Look closely at the details together and polish the work against the original brief."],
+              ["05", "Deliver", "Launch or hand over the finished work, along with the files, access, and next steps you need."],
             ].map(([number, title, description]) => (
               <li className="process-step" key={number} data-scroll-reveal>
                 <span>{number}</span>
