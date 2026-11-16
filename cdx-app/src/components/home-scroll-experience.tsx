@@ -154,7 +154,67 @@ export default function HomeScrollExperience({
         return () => section.classList.remove("is-pinned");
       });
 
-      showcaseMedia.add("(max-width: 900px), (max-height: 479px)", () => {
+      showcaseMedia.add("(max-width: 900px) and (min-height: 480px)", () => {
+        if (cards.length === 0) return;
+
+        const viewport = section.querySelector<HTMLElement>(
+          ".work-showcase-track-viewport"
+        );
+        const track = section.querySelector<HTMLElement>(
+          ".work-showcase-track"
+        );
+        if (!viewport || !track) return;
+
+        section.classList.add("is-horizontal");
+        gsap.set(cards, { autoAlpha: 0 });
+        gsap.set(cards[0], { autoAlpha: 1 });
+
+        const timeline = gsap.timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top+=72",
+            end: () => `+=${viewport.clientWidth * (cards.length - 1)}`,
+            pin: true,
+            scrub: 0.8,
+            anticipatePin: 1,
+            invalidateOnRefresh: true,
+          },
+        });
+        timeline.to(
+          track,
+          {
+            x: () => -viewport.clientWidth * (cards.length - 1),
+            duration: cards.length - 1,
+            ease: "none",
+          },
+          0
+        );
+
+        cards.forEach((card, index) => {
+          if (index === 0) return;
+
+          const fadeAt = index - 0.8;
+          timeline
+            .to(
+              cards[index - 1],
+              { autoAlpha: 0, duration: 0.8, ease: "none" },
+              fadeAt
+            )
+            .to(
+              card,
+              { autoAlpha: 1, duration: 0.8, ease: "none" },
+              fadeAt
+            );
+        });
+
+        return () => {
+          timeline.scrollTrigger?.kill();
+          timeline.kill();
+          section.classList.remove("is-horizontal");
+        };
+      });
+
+      showcaseMedia.add("(max-height: 479px)", () => {
         cards.forEach((card) => {
           const poster = card.querySelector<HTMLElement>(
             ".work-showcase-card__image"

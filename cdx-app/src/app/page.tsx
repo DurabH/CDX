@@ -324,7 +324,8 @@ function FoundersSection() {
           Two disciplines. <span className="text-gradient-brand">One project team.</span>
         </h2>
         <p>
-          Waleed focuses on mobile apps, graphic design, and video editing.
+          Waleed focuses on mobile apps, graphic design, and video editing, and
+          also works on web development.
           Durab focuses on web development and AI/ML, with hands-on UI/UX and
           SEO skills and supporting experience in mobile apps.
         </p>

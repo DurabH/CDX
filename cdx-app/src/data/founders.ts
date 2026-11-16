@@ -9,8 +9,13 @@ export const founders: Founder[] = [
     portfolioUrl: "https://rajawaleed-101.github.io/My-Portfolio-2/",
     portfolioLabel: "View creative portfolio",
     portfolioDescription:
-      "Waleed specializes in mobile apps, graphic design, and video editing, combining technical skill with a strong visual eye.",
-    specialties: ["Mobile apps", "Graphic design", "Video editing"],
+      "Waleed works across mobile apps and web development, alongside graphic design and video editing, combining technical skill with a strong visual eye.",
+    specialties: [
+      "Mobile apps",
+      "Web development",
+      "Graphic design",
+      "Video editing",
+    ],
   },
   {
     id: "durab-haider",
